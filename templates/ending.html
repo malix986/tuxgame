@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Guess the character</title>
+    <body style="text-align:center">
+      <div class="container">
+        <!-- HEADER --> 
+         <!-- Remaining hints -->
+         <nav class="navbar sticky-top navbar-light bg-light">
+          <span class="navbar-text">
+            Ciao {{user}}
+          </span>
+          <!-- Player stats -->
+          <h5>Life: <span class="badge badge-secondary">{{life}}</span></h5>
+          <h5>Score: <span class="badge badge-secondary">{{score}}</span></h5>
+        </nav>
+
+        <span class="border">
+        </span>
+        <div style="background:{{color}} !important" class="jumbotron jumbotron-fluid"> 
+            <div class="container">
+              <h1 class="display-4">{{ winfail }}</h1>
+              <p class="lead">{{ esito }}</p>
+            </div>
+        </div>
+        <a href="/" class="btn btn-primary">Nuova partita!</a>
+        <h2>GRAZIE PER AVER GIOCATO</h2>
+      </div>
+    </body>
+</html>
