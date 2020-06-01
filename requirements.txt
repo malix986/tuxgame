@@ -1,0 +1,4 @@
+Flask==1.1.2
+PyMySQL==0.9.3
+numpy==1.18.2
+configparser==5.0.0
