@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
-import setup
-import mysql_functions
+# import setup
+# import mysql_functions
 
 #https://cloud.google.com/appengine/docs/standard/python3/setting-up-environment
 
