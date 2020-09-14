@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-   setup.new_game()
    return render_template(
       'index.html',
       spoiler = 'pippo'
