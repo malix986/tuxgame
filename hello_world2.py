@@ -1,5 +1,3 @@
-import mysql_functions
-import settings
 import pymysql
 
 import os
