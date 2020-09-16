@@ -11,7 +11,7 @@ if os.environ.get('GAE_ENV') == 'standard':
     unix_socket = '/couldsql/{}'.format(db_connection_name)
     cnx = pymysql.connect(user=db_user, password=db_password, unix_socket=unix_socket, db=db_name)
 else:
-    host = '127.0.0.1'
+    host = '34.65.22.169'
     cnx = pymysql.connect(user=db_user, password=db_password, host=host, db=db_name)
 
 with cnx.cursor() as cursor:
