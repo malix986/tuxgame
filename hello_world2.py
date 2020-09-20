@@ -1,4 +1,4 @@
-import pymysql
+import PyMySQL as pymysql
 
 import os
 
