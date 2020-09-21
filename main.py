@@ -9,7 +9,7 @@ import sqlalchemy
 connection_name = "python-app-test-289520:europe-west6:wikigame"
 table_name = "test_table"
 table_field = "stringa"
-table_field_value = "maronna"
+table_field_value = "maronnasantissima"
 db_name = "wikitest"
 db_user = "root"
 db_password = "IAmR00t"
@@ -26,7 +26,7 @@ query_string = dict({"unix_socket": "/cloudsql/{}".format(connection_name)})
 
 def insert(request):
     request_json = request.get_json()
-    stmt = sqlalchemy.text('insert into table_name (table_field) values ("table_field_value")')
+    stmt = sqlalchemy.text('insert into '+table_name+' ('+table_field+') values ("'+table_field_value+'")')
     
     db = sqlalchemy.create_engine(
       sqlalchemy.engine.url.URL(
