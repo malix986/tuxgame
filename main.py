@@ -47,3 +47,5 @@ def insert(request):
     except Exception as e:
         return 'Error: {}'.format(str(e))
     return 'ok'
+
+insert('something')
