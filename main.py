@@ -7,14 +7,16 @@ client = bigquery.Client()
 #     unique_words = row['unique_words']
 #     print(f'{title:<20} | {unique_words}')
 
+def get_hint():
+   sql = "SELECT * FROM tuxgame.character_list"
+   array_list = query_to_array(sql)
+   return array_list
 
-def set_hint(hint,character_id):
+def query_to_array(sql):
+   results = client.query(sql)
+   array_list = []
+   for row in results:
+       array_list.append(row)
+   return array_list
 
-   query = 'SELECT * FROM tuxgame.character_list)'
-
-   # Execute the SQL command
-   res = client.query(query)
-   output = res.result()
-   print(output)
-
-set_hint('bravissimo',4)
+print(get_hint())
