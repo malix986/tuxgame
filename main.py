@@ -11,7 +11,7 @@ def set_character_name(character_name):
    ## Prepare SQL query to INSERT the new record into the database.
    query = 'INSERT INTO tuxgame.character_list(name) VALUES ("' + str(character_name) + '")'
    # Execute the SQL command
-   results = client.query(query)
+   client.query(query)
    print(character_name + ' insert in character_list correctly \n')
 
-set_character_name('crediamoci')
+set_character_name('lighter')
