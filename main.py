@@ -14,4 +14,4 @@ def set_character_name(character_name):
    results = client.query(query)
    print(character_name + ' insert in character_list correctly \n')
 
-set_character_name('fortunadia')
+set_character_name('crediamoci')
