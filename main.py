@@ -15,8 +15,8 @@ def get_character_id(character_name):
    print('SQL executed')
    # Fetch all the rows in a list of lists.
    
-   print('character_id: '+str(result[0])+'\n')
-   character_id = result[0]
+   print('character_id: '+str(result[0]['id'])+'\n')
+   character_id = result[0]['id']
    return character_id
 
 print(get_character_id('lighter'))
