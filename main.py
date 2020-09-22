@@ -10,10 +10,11 @@ client = bigquery.Client()
 
 def set_hint(hint,character_id):
 
-   query = 'INSERT INTO tuxgame.hint_list(character_id,hint) VALUES (' + str(character_id) + ',"' + str(hint) + '")'
-   print('New entry.....')
+   query = 'SELECT * FROM tuxgame.character_list)'
+
    # Execute the SQL command
-   client.query(query)
-   print('New entry.....OK',end='\r')
+   res = client.query(query)
+   output = res.result()
+   print(output)
 
 set_hint('bravissimo',4)
