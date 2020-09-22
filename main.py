@@ -8,10 +8,10 @@ client = bigquery.Client()
 #     print(f'{title:<20} | {unique_words}')
 
 def get_character_id(character_name):
-   sql = 'SELECT ROW_NUMBER() OVER() AS id FROM character_list WHERE name = "' + str(character_name) + '"'
+   query = 'SELECT ROW_NUMBER() OVER() AS id FROM character_list WHERE name = "' + str(character_name) + '"'
    print('  getting character id')
    # Execute the SQL command
-   results = client.query(query)
+   result = client.query(query)
    print('SQL executed')
    # Fetch all the rows in a list of lists.
    
