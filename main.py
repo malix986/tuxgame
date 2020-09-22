@@ -8,16 +8,12 @@ client = bigquery.Client()
 #     print(f'{title:<20} | {unique_words}')
 
 
-def get_character_id(character_name):
-   query = 'SELECT id from (SELECT name, ROW_NUMBER() OVER() AS id FROM tuxgame.character_list) WHERE name = "' + str(character_name) + '"'
-   print('  getting character id')
-   # Execute the SQL command
-   result = client.query(query)
-   print('SQL executed')
-   # Fetch all the rows in a list of lists.
-   for row in result:
-       character_id = row['id']
-       print('character_id: '+str(character_id)+'\n')
-   return character_id
+def set_hint(hint,character_id):
 
-print(get_character_id('paperino'))
+   query = 'INSERT INTO tuxgame.hint_list(character_id,hint) VALUES (' + str(character_id) + ',"' + str(hint) + '")'
+   print('New entry.....')
+   # Execute the SQL command
+   client.query(query)
+   print('New entry.....OK',end='\r')
+
+set_hint('bravissimo',4)
