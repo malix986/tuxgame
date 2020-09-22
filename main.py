@@ -7,11 +7,16 @@ client = bigquery.Client()
 #     unique_words = row['unique_words']
 #     print(f'{title:<20} | {unique_words}')
 
-def set_character_name(character_name):
-   ## Prepare SQL query to INSERT the new record into the database.
-   query = 'INSERT INTO tuxgame.character_list(name) VALUES ("' + str(character_name) + '")'
+def get_character_id(character_name):
+   sql = 'SELECT ROW_NUMBER() OVER() AS id FROM character_list WHERE name = "' + str(character_name) + '"'
+   print('  getting character id')
    # Execute the SQL command
-   client.query(query)
-   print(character_name + ' insert in character_list correctly \n')
+   results = client.query(query)
+   print('SQL executed')
+   # Fetch all the rows in a list of lists.
+   
+   print('character_id: '+str(result[0])+'\n')
+   character_id = result[0]
+   return character_id
 
-set_character_name('lighter')
+print(get_character_id('lighter'))
