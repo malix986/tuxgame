@@ -35,6 +35,10 @@ def query_to_array(sql):
    return array_list
 
 def update_hint_shown(character_name, hint, hint_shown):
+   print('DEBUGGGGG')
+   print(character_name)
+   print(hint)
+   print(hint_shown)
    sql = 'UPDATE tuxgame.hint_list SET hint_shown = '+str(hint_shown)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
    client.query(sql)
 
