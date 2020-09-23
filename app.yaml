@@ -1,7 +1,1 @@
 runtime: python37
-
-env_variables:
-    CLOUD_SQL_USERNAME: root
-    CLOUD_SQL_PASSWORD: IAmR00t
-    CLOUD_SQL_DATABASE_NAME: wikitest
-    CLOUD_SQL_CONNECTION_NAME: python-app-test-289520:europe-west6:wikigame
