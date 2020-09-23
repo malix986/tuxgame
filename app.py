@@ -24,6 +24,10 @@ def hint():
       setup.player_stats['username'] = user
 
    setup.get_random_hint()
+   print('DEBUGGGGG')
+   print(setup.character_stats['name'])
+   print(setup.hint_stats['hint'])
+   print(setup.hint_stats['shown'])   
    mysql_functions.update_hint_shown(setup.character_stats['name'], setup.hint_stats['hint'], setup.hint_stats['shown']+1)
    share = setup.hint_stats['share']
    potential_score = setup.hint_stats['potential_score']
