@@ -15,7 +15,7 @@ def populate_hint_list(character_name):
     for hint in hint_list:
         if hint is not ' ':
             print('New entry.....')
-            mysql_functions.set_hint(hint,character_name,counter)
+            mysql_functions.set_hint(hint,character_name)
             print('New entry.....OK - '+str(counter),end='\r')
             counter = counter+1
     print(str(counter)+' new hints added!')
