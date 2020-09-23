@@ -21,7 +21,7 @@ def populate_hint_list(character_name):
     print(str(counter)+' new hints added!')
     # disconnect from server
 
-character_list = ["Donatella Rettore"]
+character_list = ["Donatella Rettore","Renato Zero","Silvio Berlusconi","Paolo Bonolis","Fedez","Chiara Ferragni","Luciano Pavarotti","Pippo Baudo","Barbara D'Urso","Max Pezzali","Ambra Angiolini","Donald Trump","Topolino","Freddie Mercury","Emilio Fede"]
 
 for char in character_list:
     create(char)
