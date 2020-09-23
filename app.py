@@ -59,13 +59,13 @@ def answer():
          color = '#d4edda'
          winfail = 'COMPLIMENTI!'
          esito = '...era proprio '+setup.character_stats['name']
-         mysql_functions.update_hint_guessed(setup.hint_stats['hint'],setup.hint_stats['guessed']+1)
+         mysql_functions.update_hint_guessed(setup.character_stats['name'], setup.hint_stats['hint'],setup.hint_stats['guessed']+1)
          setup.update_score()
       else:
          color = '#f8d7da'
          winfail = 'PECCATO!'
          esito = 'Mi dispiace, hai risposto '+ answer + ', mentre la risposta corretta era '+ setup.character_stats['name']
-         mysql_functions.update_hint_wrong(setup.hint_stats['hint'],setup.hint_stats['wrong']+1)
+         mysql_functions.update_hint_wrong(setup.character_stats['name'], setup.hint_stats['hint'],setup.hint_stats['wrong']+1)
          setup.life_loss()
       #carica già round successivo
       
