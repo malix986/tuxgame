@@ -1,12 +1,12 @@
 ##returns array of sentences
 
-from mediawiki import MediaWiki
-wiki = MediaWiki(lang='IT')
+import wikipedia
+wikipedia.set_lang("it")
 
 def get_description(character_name):
-    content = wiki.page(character_name)
+    content = wikipedia.page(character_name)
     print('Character description downloaded')
-    description = str(content.summary).replace("\n"," ")
+    description = str(content.content).replace("\n"," ")
     description = description.replace('"',"'")
     return description
 
@@ -22,6 +22,5 @@ def get_wiki_hints(character_name):
     description = get_description(character_name)
     hint_list = replace_name(character_name,description)
     return hint_list
-
 
 ## replace_name('Silvio Berlusconi','il mio nome è Silvio non Mario. Vivo sulle montagne. Berlusconi si chiama anche Luca')
