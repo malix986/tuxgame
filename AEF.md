@@ -1,12 +1,17 @@
 # APP ENGINE FUNCTIONS
 
 # VIRTUAL ENV
-virtualenv --python python3 ~/envs/sql_test
-source ~/envs/sql_test/bin/activate
+virtualenv --python python3 ~/envs/big_query
+source ~/envs/big_query/bin/activate
 
 # INSTALL REQUIREMENTS
 pip install -r requirements.txt
 pip3 install -r requirements.txt
+
+# VIM
+vim file.txt
+press i to edit
+press ESC :wq to save
 
 # BIG QUERY
 
