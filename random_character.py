@@ -17,3 +17,4 @@ def get_random_character_hints():
 def get_character_hints(character_id):
     hint_list = ms.get_character_hint(character_id)
     return hint_list
+
