@@ -7,8 +7,8 @@ client = bigquery.Client()
 #     unique_words = row['unique_words']
 #     print(f'{title:<20} | {unique_words}')
 
-def get_hint(hint_id):
-   sql = "SELECT * FROM (SELECT *, ROW_NUMBER() OVER() AS id FROM tuxgame.hint_list) WHERE id = " + str(hint_id)
+def get_character_hint(character_id):
+   sql = "SELECT * FROM (SELECT * FROM (SELECT *, ROW_NUMBER() OVER() AS id FROM tuxgame.hint_list) WHERE character_id = " + str(character_id)+")"
    array_list = query_to_array(sql)
    return array_list
 
@@ -19,4 +19,4 @@ def query_to_array(sql):
        array_list.append(row)
    return array_list
 
-print(get_hint(2))
+print(get_character_hint(6))
