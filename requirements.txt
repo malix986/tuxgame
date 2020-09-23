@@ -4,4 +4,4 @@ numpy==1.18.2
 configparser==5.0.0
 SQLAlchemy==1.3.12
 google-cloud-bigquery==1.27.2
-mediawiki==0.6.4
+wikipedia==1.4.0
