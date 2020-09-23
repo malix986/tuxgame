@@ -23,7 +23,7 @@ def get_character_list():
    return array_list
 
 def get_character_hint(character_name):
-   sql = 'SELECT * FROM tuxgame.hint_list WHERE character_name = "' + str(character_name)+'")'
+   sql = 'SELECT * FROM tuxgame.hint_list WHERE character_name = "' + str(character_name)+'"'
    array_list = query_to_array(sql)
    return array_list
 
