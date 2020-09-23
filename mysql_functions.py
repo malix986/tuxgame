@@ -53,7 +53,7 @@ def set_match():
    score = str(setup.player_stats['score'])
 
    print('New entry.....')
-   sql = 'INSERT INTO tuxgame.session_list(username,score,timestamp) VALUES ("' + user + '",' + score + ',CURRENT_TIMESTAMP)
+   sql = 'INSERT INTO tuxgame.session_list(username,score,timestamp) VALUES ("' + user + '",' + score + ',CURRENT_TIMESTAMP)'
    # Execute the SQL command
    client.query(sql)
 
