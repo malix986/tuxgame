@@ -12,10 +12,11 @@ def get_description(character_name):
 
 def replace_name(character_name,description):
     hint_list = character_name.split(" ")
-    print('Removing '+character_name+' from description')
+    print('Removing '+character_name+' Wikipedia from description')
     for hint in hint_list:
         description = str(description).replace(hint,'XXXX')
     array_description = description.split(". ")
+    print('Removing '+character_name+' Wikipedia from description.... COMPLETE',end='\r')
     return array_description
 
 def get_wiki_hints(character_name):
