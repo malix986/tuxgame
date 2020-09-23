@@ -23,7 +23,7 @@ def get_character_list():
    return array_list
 
 def get_character_hint(character_name):
-   sql = "SELECT * FROM tuxgame.hint_list WHERE character_name = " + str(character_name)+")"
+   sql = 'SELECT * FROM tuxgame.hint_list WHERE character_name = "' + str(character_name)+'")'
    array_list = query_to_array(sql)
    return array_list
 
@@ -35,15 +35,15 @@ def query_to_array(sql):
    return array_list
 
 def update_hint_shown(character_name, hint, hint_shown):
-   sql = "UPDATE tuxgame.hint_list SET hint_shown = "+str(hint_shown)+" WHERE hint ="+str(hint)+" AND character_name ="+str(character_name)
+   sql = 'UPDATE tuxgame.hint_list SET hint_shown = '+str(hint_shown)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
    client.query(sql)
 
 def update_hint_guessed(character_name, hint, hint_guessed):
-   sql = "UPDATE tuxgame.hint_list SET hint_guessed = "+str(hint_guessed)+" WHERE hint ="+str(hint)+" AND character_name ="+str(character_name)
+   sql = 'UPDATE tuxgame.hint_list SET hint_guessed = '+str(hint_guessed)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
    client.query(sql)
 
 def update_hint_wrong(character_name, hint, hint_wrong):
-   sql = "UPDATE tuxgame.hint_list SET hint_wrong = "+str(hint_wrong)+" WHERE hint ="+str(hint)+" AND character_name ="+str(character_name)
+   sql = 'UPDATE tuxgame.hint_list SET hint_wrong = '+str(hint_wrong)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
    client.query(sql)
 
 def set_match():
