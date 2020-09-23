@@ -23,8 +23,7 @@ def new_round():
     global character_stats
 
     char_to_guess = rc.get_random_character()
-    char_id = char_to_guess[0]
-    char_name = char_to_guess[1]
+    char_name = char_to_guess['name']
     hint_list_complete = rc.get_character_hints(char_id)
     hint_list_complete = list(hint_list_complete)
     remaining_hints = hint_list_complete
@@ -32,7 +31,6 @@ def new_round():
 
     character_stats = {
         'char_to_guess': char_to_guess,
-        'id': char_id,
         'name': char_name,
         'hint_list_complete': hint_list_complete,
         'remaining_hints': remaining_hints,
@@ -46,11 +44,10 @@ def get_random_hint():
     random_hint = random.choice(character_stats['remaining_hints'])
     hint_count = len(character_stats['remaining_hints'])
     hint_gone = character_stats['hint_total'] - hint_count +1
-    hint_id = random_hint[0]
-    hint = random_hint[2]
-    hint_shown = random_hint[3]
-    hint_guessed = random_hint[4]
-    hint_wrong = random_hint[5]
+    hint = random_hint['hint']
+    hint_shown = random_hint['hint_shown']
+    hint_guessed = random_hint['hint_guessed']
+    hint_wrong = random_hint['hint_wrong']
     share = round(hint_gone/character_stats['hint_total'],2)*100
     potential_score = round(100*(1-((hint_gone-1)/character_stats['hint_total'])))
 
@@ -65,7 +62,6 @@ def get_random_hint():
         'random_hint': random_hint,
         'count': hint_count,
         'gone': hint_gone,
-        'id': hint_id,
         'hint': hint,
         'shown': hint_shown,
         'guessed': hint_guessed,

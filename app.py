@@ -29,7 +29,6 @@ def hint():
    potential_score = setup.hint_stats['potential_score']
    score = setup.player_stats['score']
    life = setup.player_stats['life']
-   print('hint id: '+str(setup.hint_stats['id']))
    print('times shown: '+str(setup.hint_stats['shown']))
    return render_template(
       'hint.html', 
@@ -56,13 +55,13 @@ def answer():
          color = '#d4edda'
          winfail = 'COMPLIMENTI!'
          esito = '...era proprio '+setup.character_stats['name']
-         mysql_functions.update_hint_guessed(setup.hint_stats['id'],setup.hint_stats['guessed']+1)
+         mysql_functions.update_hint_guessed(setup.hint_stats['hint'],setup.hint_stats['guessed']+1)
          setup.update_score()
       else:
          color = '#f8d7da'
          winfail = 'PECCATO!'
          esito = 'Mi dispiace, hai risposto '+ answer + ', mentre la risposta corretta era '+ setup.character_stats['name']
-         mysql_functions.update_hint_wrong(setup.hint_stats['id'],setup.hint_stats['wrong']+1)
+         mysql_functions.update_hint_wrong(setup.hint_stats['hint'],setup.hint_stats['wrong']+1)
          setup.life_loss()
       #carica già round successivo
       
