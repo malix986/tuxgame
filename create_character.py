@@ -4,8 +4,8 @@ import time
 
 def create(character_name):
     mysql_functions.set_character_name(character_name)
-    print(str(characharacter_name) + ' inserted correctly... now populating hint list')
-    populate_hint_list(character_name,character_id)
+    print(str(character_name) + ' inserted correctly... now populating hint list')
+    populate_hint_list(character_name)
 
 def populate_hint_list(character_name):
     ## Get Description and populate sql
