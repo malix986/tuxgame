@@ -13,7 +13,7 @@ def set_character_name(character_name):
    print(character_name + ' insert in character_list correctly \n')
 
 def set_hint(hint,character_name):
-   sql = 'INSERT INTO tuxgame.hint_list(character_name,hint) VALUES ("' + str(character_name) + '","' + str(hint) + '")'
+   sql = 'INSERT INTO tuxgame.hint_list(character_name,hint,hint_shown,hint_guessed,hint_wrong) VALUES ("' + str(character_name) + '","' + str(hint) + '",0,0,0)'
    # Execute the SQL command
    client.query(sql)
 
