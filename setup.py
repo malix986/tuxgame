@@ -24,7 +24,7 @@ def new_round():
 
     char_to_guess = rc.get_random_character()
     char_name = char_to_guess['name']
-    hint_list_complete = rc.get_character_hints(char_id)
+    hint_list_complete = rc.get_character_hints(char_name)
     hint_list_complete = list(hint_list_complete)
     remaining_hints = hint_list_complete
     hint_total = len(hint_list_complete)
