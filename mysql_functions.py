@@ -1,5 +1,7 @@
 import time
 import setup
+import math
+
 from google.cloud import bigquery
 
 client = bigquery.Client()
@@ -12,7 +14,7 @@ def set_character_name(character_name):
     client.query(sql)
 
 
-def set_hint(hint,character_name):
+def set_hint(hint, character_name):
     sql = 'INSERT INTO tuxgame.hint_list(character_name,hint,hint_shown,hint_guessed,hint_wrong) VALUES ("' + str(character_name) + '","' + str(hint) + '",0,0,0)'
     # Execute the SQL command
     client.query(sql)
@@ -34,7 +36,7 @@ def query_to_array(sql):
     results = client.query(sql)
     array_list = []
     for row in results:
-       array_list.append(row)
+        array_list.append(row)
     return array_list
 
 
@@ -52,10 +54,10 @@ def hint_query_to_array(sql, chunks):
         }
         array_list.append(array_dict)
     sorted_array = sorted(array_list, key=lambda k: k['easyness'])
+    step = math.ceil(len(sorted_array)/chunks)
     # Yields successive 'n' sized chunks from list 'list_name'
-    for i in range(0, len(sorted_array), chunks):
-        yield sorted_array[i:i + chunks]
-    print(sorted_array)
+    for i in range(0, len(sorted_array), step):
+        yield sorted_array[i:i + step]
     return sorted_array
 
 
@@ -71,7 +73,7 @@ def update_hint_guessed(character_name, hint, hint_guessed):
 
 def update_hint_wrong(character_name, hint, hint_wrong):
     sql = 'UPDATE tuxgame.hint_list SET hint_wrong = '+str(hint_wrong)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
-    client.query(sql)
+    client.query(sql
 
 
 def set_match():
@@ -82,4 +84,3 @@ def set_match():
     sql = 'INSERT INTO tuxgame.session_list(username,score,timestamp) VALUES ("' + user + '",' + score + ',CURRENT_TIMESTAMP)'
     # Execute the SQL command
     client.query(sql)
-
