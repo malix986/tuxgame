@@ -3,6 +3,7 @@ def move():
     answered = answer(guess)
     return answered
 
+
 def answer(choice):
     check_choice = str(choice).lower()
     if check_choice == 'y':
@@ -13,6 +14,7 @@ def answer(choice):
         confirmation = confirm_name(choice)
         return confirmation
 
+
 def continue_game():
     continue_game = input('Premi Q per uscire, o qualsiasi tasto per giocare ancora \n')
     continue_game = str(continue_game).lower()
@@ -20,6 +22,7 @@ def continue_game():
         return False
     else: 
         return True
+
 
 def confirm_name(choice):
     confirmation = input('Hai detto '+choice+', sei sicuro? (Y/N)')
