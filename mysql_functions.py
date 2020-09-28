@@ -73,7 +73,7 @@ def update_hint_guessed(character_name, hint, hint_guessed):
 
 def update_hint_wrong(character_name, hint, hint_wrong):
     sql = 'UPDATE tuxgame.hint_list SET hint_wrong = '+str(hint_wrong)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
-    client.query(sql
+    client.query(sql)
 
 
 def set_match():
