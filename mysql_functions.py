@@ -6,6 +6,7 @@ from google.cloud import bigquery
 
 client = bigquery.Client()
 
+# funziona
 
 def set_character_name(character_name):
     ## Prepare SQL query to INSERT the new record into the database.
