@@ -5,6 +5,8 @@ import mysql_functions
 #https://cloud.google.com/appengine/docs/standard/python3/setting-up-environment
 
 app = Flask(__name__)
+app.config['ENV'] = 'development'
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -19,7 +21,11 @@ def hint():
    global potential_score
    
    print('setting user...', end='\r')
-   user = setup.player_stats['username']
+   try:
+      user = setup.player_stats['username']
+   except:
+      user = 'user rotto'
+
    if request.form.get('user'):
       user = request.form.get('user')
       setup.player_stats['username'] = user
@@ -67,8 +73,9 @@ def answer():
          setup.life_loss()
       #carica già round successivo
       
+      life = setup.player_stats['life']
       setup.new_round()
-      if life == 0:
+      if life < 1:
          mysql_functions.set_match()
          return render_template(
          'ending.html',
