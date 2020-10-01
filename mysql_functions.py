@@ -53,10 +53,8 @@ def hint_query_to_array(sql, chunks):
         }
         array_list.append(array_dict)
     sorted_array = sorted(array_list, key=lambda k: k['easyness'])
-    step = math.ceil(len(sorted_array)/chunks)
-    print(len(sorted_array))
-    print(chunks)
-    print(step)
+    step = math.floor(len(sorted_array)/chunks)
+    print('Full Array #' + str(len(sorted_array)) + ' divided in ' + str(chunks) + ' chunks of '+str(step))
     # Yields successive 'n' sized chunks from list 'list_name'
     for i in range(0, len(sorted_array), step):
         yield sorted_array[i:i + step]

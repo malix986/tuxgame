@@ -9,6 +9,8 @@ hint_stats = {}
 
 def new_game():
     global player_stats
+    
+    print('\n \n ######## SETUP NEW GAME ########')
     player_stats = {
         'score': 0,
         'life': 2,
@@ -20,12 +22,10 @@ def new_game():
 def new_round():
     global character_stats
 
+    print('\n \n ######## SETUP NEW ROUND ########')
     char_to_guess = rc.get_random_character()
     char_name = char_to_guess['name']
     hint_list_full = rc.get_character_hints(char_name)
-    print('########## HINT LIST FULL #########')
-    # print(hint_list_full)
-    # print(len(hint_list_full))
     hint_list_complete = []
     for i in hint_list_full:
         random_hint_chunked = random.choice(i)
@@ -33,9 +33,9 @@ def new_round():
     hint_list_complete = list(hint_list_complete)
     remaining_hints = hint_list_complete
     hint_total = len(hint_list_complete)
-    print('########## HINT LIST COMPLETE #########')
+    print('######## HINT LIST COMPLETE ########')
     print(hint_list_complete)
-    print(len(hint_list_complete))
+    print('_____total chunks: ' + str(len(hint_list_complete)))
 
     character_stats = {
         'char_to_guess': char_to_guess,

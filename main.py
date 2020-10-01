@@ -18,10 +18,12 @@ def index():
 def hint():
    global potential_score
    
+   print('setting user...', end='\r')
    user = setup.player_stats['username']
    if request.form.get('user'):
       user = request.form.get('user')
       setup.player_stats['username'] = user
+   print('user ' + user + ' set')
 
    setup.get_random_hint()
    mysql_functions.update_hint_shown(setup.character_stats['name'], setup.hint_stats['hint'], setup.hint_stats['shown']+1)
