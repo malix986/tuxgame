@@ -34,3 +34,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=~/key.json
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
   --member "serviceAccount:big-query-credentials@${PROJECT_ID}.iam.gserviceaccount.com" \
   --role "roles/bigquery.user"
+
+#   Local Launch
+
+dev_appserver.py app.yaml
