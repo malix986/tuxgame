@@ -7,76 +7,85 @@ import mysql_functions
 app = Flask(__name__)
 app.config['ENV'] = 'development'
 
+player_stats = {}
+character_stats = {}
+hint_stats = {}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-   setup.new_game()
+   global player_stats
+   global character_stats
+
+   player_stats = setup.set_player_stats()
+   character_stats = setup.set_character_stats()
+
    return render_template(
-      'index.html',
-      spoiler = setup.character_stats['name']
+      'index.html'
       )
 
 @app.route('/hint', methods=['GET', 'POST'])
 def hint():
-   global potential_score
-   
-   print('setting user...', end='\r')
-   try:
-      user = setup.player_stats['username']
-   except:
-      user = 'user rotto'
+   global hint_stats
+   global character_stats
+   global player_stats
 
+   user = player_stats['username']
    if request.form.get('user'):
       user = request.form.get('user')
-      setup.player_stats['username'] = user
+      player_stats['username'] = user
    print('user ' + user + ' set')
 
-   setup.get_random_hint()
-   mysql_functions.update_hint_shown(setup.character_stats['name'], setup.hint_stats['hint'], setup.hint_stats['shown']+1)
-   share = setup.hint_stats['share']
-   potential_score = setup.hint_stats['potential_score']
-   score = setup.player_stats['score']
-   life = setup.player_stats['life']
-   print('times shown: '+str(setup.hint_stats['shown']))
+   print('getting random hint')
+   hint_stats = setup.get_random_hint(character_stats)
+   setup.remove_used_hint(character_stats,hint_stats)
+   mysql_functions.update_hint_shown(character_stats['name'], hint_stats['hint'], hint_stats['shown']+1)
+   print('times shown: '+str(hint_stats['shown']))
+
    return render_template(
       'hint.html', 
-      show = setup.hint_stats['hint'],
-      remaining = setup.hint_stats['count']-1,
-      tot_hint = len(setup.character_stats['hint_list_complete']),
-      share = share,
-      score = score,
-      potential_score = potential_score,
+      show = hint_stats['hint'],
+      remaining = hint_stats['count']-1,
+      tot_hint = len(character_stats['hint_list_complete']),
+      share = hint_stats['share'],
+      score = player_stats['score'],
+      potential_score = hint_stats['potential_score'],
       user = user,
-      life = life
+      life = player_stats['life']
       )
 
 @app.route('/answer', methods=['GET', 'POST'])
 def answer():
-   user = setup.player_stats['username']
-   score = setup.player_stats['score']
-   life = setup.player_stats['life']
+   global hint_stats
+   global character_stats
+   global player_stats
+
+   user = player_stats['username']
+   score = player_stats['score']
+   life = player_stats['life']
    if request.method == 'POST':
       answer = request.form['answer']
       l_answer = str(answer).lower()
-      char_name = str(setup.character_stats['name']).lower()
+      char_name = str(character_stats['name']).lower()
       if l_answer == char_name:
          color = '#d4edda'
          winfail = 'COMPLIMENTI!'
-         esito = '...era proprio '+setup.character_stats['name']
-         mysql_functions.update_hint_guessed(setup.character_stats['name'], setup.hint_stats['hint'],setup.hint_stats['guessed']+1)
-         setup.update_score()
+         esito = '...era proprio '+character_stats['name']
+         print(hint_stats)
+         mysql_functions.update_hint_guessed(character_stats['name'], hint_stats['hint'],hint_stats['guessed']+1)
+         player_stats['score'] = setup.update_score(player_stats,hint_stats)
       else:
          color = '#f8d7da'
          winfail = 'PECCATO!'
-         esito = 'Mi dispiace, hai risposto '+ answer + ', mentre la risposta corretta era '+ setup.character_stats['name']
-         mysql_functions.update_hint_wrong(setup.character_stats['name'], setup.hint_stats['hint'],setup.hint_stats['wrong']+1)
-         setup.life_loss()
-      #carica già round successivo
-      
-      life = setup.player_stats['life']
-      setup.new_round()
+         esito = 'Mi dispiace, hai risposto '+ answer + ', mentre la risposta corretta era '+ character_stats['name']
+         print(hint_stats)
+         mysql_functions.update_hint_wrong(character_stats['name'], hint_stats['hint'],hint_stats['wrong']+1)
+         player_stats['life'] = setup.life_loss(player_stats)
+         
+      #carica già personaggio successivo
+      life = player_stats['life']
+      character_stats = setup.set_character_stats()
       if life < 1:
-         mysql_functions.set_match()
+         mysql_functions.set_match(player_stats)
          return render_template(
          'ending.html',
          esito = esito,

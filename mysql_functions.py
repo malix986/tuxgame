@@ -76,9 +76,9 @@ def update_hint_wrong(character_name, hint, hint_wrong):
     client.query(sql)
 
 
-def set_match():
-    user = str(setup.player_stats['username'])
-    score = str(setup.player_stats['score'])
+def set_match(player_stats):
+    user = str(player_stats['username'])
+    score = str(player_stats['score'])
 
     print('New entry.....')
     sql = 'INSERT INTO tuxgame.session_list(username,score,timestamp) VALUES ("' + user + '",' + score + ',CURRENT_TIMESTAMP)'
