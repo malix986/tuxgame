@@ -39,3 +39,4 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 
 export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value core/project)
 dev_appserver.py app.yaml
+
