@@ -96,6 +96,8 @@ def get_random_hint():
     }
     print('########## HINT STATS #########')
     print(hint_stats)
+    print('########## EXPECTED #########')
+    print(character_stats)
 
 
 def update_score():
