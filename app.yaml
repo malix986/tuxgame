@@ -1,7 +1,7 @@
 runtime: python37
 
 env_variables:
-  GOOGLE_APPLICATION_CREDENTIALS: "/Users/amalinverni/Desktop/github-wikigame/tuxgame/my-project-1509808152396-6823ad5c6a5d.json"
+  GOOGLE_APPLICATION_CREDENTIALS: "/Users/amalinverni/Desktop/github-wikigame/my-project-1509808152396-6823ad5c6a5d.json"
   PYTHONIOENCODING: 'utf-8'
 
 handlers:

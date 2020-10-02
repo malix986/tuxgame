@@ -53,10 +53,10 @@ def get_random_hint():
     # random_hint = random.choice(character_stats['remaining_hints'])
     retrieve_error = "problema nel caricare l'indizio"
     hint_backup = {
-        'hint' = 'errore',
-        'hint_shown' = 1,
-        'hint_guessed' = 1,
-        'hint_wrong' = 1,
+        'hint': 'errore',
+        'hint_shown': 1,
+        'hint_guessed': 1,
+        'hint_wrong': 1,
     }
 
     try:
