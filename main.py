@@ -28,7 +28,8 @@ def hint():
    global hint_stats
    global character_stats
    global player_stats
-
+   
+   print(player_stats)
    user = player_stats['username']
    if request.form.get('user'):
       user = request.form.get('user')
@@ -58,6 +59,8 @@ def answer():
    global hint_stats
    global character_stats
    global player_stats
+
+   print(player_stats)
 
    user = player_stats['username']
    score = player_stats['score']

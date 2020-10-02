@@ -68,11 +68,13 @@ def update_hint_shown(character_name, hint, hint_shown):
 
 def update_hint_guessed(character_name, hint, hint_guessed):
     sql = 'UPDATE tuxgame.hint_list SET hint_guessed = '+str(hint_guessed)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
+    print(sql)
     client.query(sql)
 
 
 def update_hint_wrong(character_name, hint, hint_wrong):
     sql = 'UPDATE tuxgame.hint_list SET hint_wrong = '+str(hint_wrong)+' WHERE hint = "'+str(hint)+'" AND character_name ="'+str(character_name)+'"'
+    print(sql)
     client.query(sql)
 
 
