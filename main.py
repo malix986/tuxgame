@@ -1,23 +1,21 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 import setup
 import mysql_functions
 
 #https://cloud.google.com/appengine/docs/standard/python3/setting-up-environment
 
 app = Flask(__name__)
-app.config['ENV'] = 'development'
+app.secret_key = "giontravolta"
+#app.config['ENV'] = 'development'
 
-player_stats = {}
-character_stats = {}
-hint_stats = {}
+session['player_stats'] = {}
+session['character_stats'] = {}
+session['hint_stats'] = {}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-   global player_stats
-   global character_stats
-
-   player_stats = setup.set_player_stats()
-   character_stats = setup.set_character_stats()
+   session['player_stats'] = setup.set_player_stats()
+   session['character_stats'] = setup.set_character_stats()
 
    return render_template(
       'index.html'
@@ -25,11 +23,9 @@ def index():
 
 @app.route('/hint', methods=['GET', 'POST'])
 def hint():
-   global hint_stats
-   global character_stats
-   global player_stats
-   
-   print(player_stats)
+   player_stats = session['player_stats']
+   character_stats = session['character_stats']
+
    user = player_stats['username']
    if request.form.get('user'):
       user = request.form.get('user')
@@ -37,7 +33,7 @@ def hint():
    print('user ' + user + ' set')
 
    print('getting random hint')
-   hint_stats = setup.get_random_hint(character_stats)
+   session['hint_stats'] = setup.get_random_hint(character_stats)
    setup.remove_used_hint(character_stats,hint_stats)
    mysql_functions.update_hint_shown(character_stats['name'], hint_stats['hint'], hint_stats['shown']+1)
    print('times shown: '+str(hint_stats['shown']))
@@ -56,11 +52,9 @@ def hint():
 
 @app.route('/answer', methods=['GET', 'POST'])
 def answer():
-   global hint_stats
-   global character_stats
-   global player_stats
-
-   print(player_stats)
+   player_stats = session['player_stats']
+   character_stats = session['character_stats']
+   hint_stats = session['hint_stats']
 
    user = player_stats['username']
    score = player_stats['score']
@@ -111,5 +105,4 @@ def answer():
 
 
 if __name__ == '__main__':
-   app.run(debug = True)
-   
+   app.run(debug = True)   
