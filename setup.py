@@ -2,21 +2,21 @@ import random_character as rc
 import random
 import main
 
-player_stats = {}
-character_stats = {}
-
 def set_player_stats():
+    self = set_player_stats
+    print(self.__name__ +'...',end='\r')
     player_stats = {
         'score': 0,
         'life': 2,
         'username':'utente'
     }
-    print('setup.set_player_stats ok')
+    print(self.__name__ +' ok\n')
     return player_stats
 
 
 def set_character_stats():
-    print('\n \n ######## SETUP NEW CHARACTER ########')
+    self = set_character_stats
+    print(self.__name__ +'...',end='\r')
     char_to_guess = rc.get_random_character()
     char_name = char_to_guess['name']
     hint_list_full = rc.get_character_hints(char_name)
@@ -27,23 +27,21 @@ def set_character_stats():
     hint_list_complete = list(hint_list_complete)
     remaining_hints = hint_list_complete
     hint_total = len(hint_list_complete)
-    print('######## HINT LIST COMPLETE ########')
-    print(hint_list_complete)
     print('_____total chunks: ' + str(len(hint_list_complete)))
 
     character_stats = {
-        'char_to_guess': char_to_guess,
         'name': char_name,
         'hint_list_complete': hint_list_complete,
         'remaining_hints': remaining_hints,
         'hint_total': hint_total
     }
-    print('######## DEBUG CHAR STATS IN setup.new_round ########')
-    print('character_stats len: ' + str(len(character_stats)))
+    print(self.__name__ +' ok \n')
     return character_stats
 
 
 def get_random_hint(character_stats):
+    self = get_random_hint
+    print(self.__name__ +'...',end='\r')
     random_hint = character_stats['remaining_hints'][0]
     hint_count = len(character_stats['remaining_hints'])
     hint_total = character_stats['hint_total'] 
@@ -66,26 +64,37 @@ def get_random_hint(character_stats):
         'share': share,
         'potential_score': potential_score
     }
-    print('########## HINT STATS #########')
-    print(hint_stats)
+    print(self.__name__ +' ok\n')
     return hint_stats
 
 
 def remove_used_hint(character_stats,hint_stats):
+    self = remove_used_hint
+    print(self.__name__ +'...',end='\r')
+    print(character_stats['remaining_hints'])
     if hint_stats['count'] > 1:
         character_stats['remaining_hints'].remove(hint_stats['random_hint'])
     elif hint_stats['count'] == 1:
         hint_stats['hint'] = hint_stats['hint']
     else:
         hint_stats['hint'] = 'INDIZI FINITI'
+    print(character_stats['remaining_hints'])    
+    print(self.__name__ +' ok\n')
 
 
 def update_score(player_stats,hint_stats):
+    self = update_score
+    print(self.__name__ +'...',end='\r')
     player_stats['score'] = player_stats['score'] + hint_stats['potential_score']
+    print(self.__name__ +' ok\n')
     return player_stats['score']
 
+
 def life_loss(player_stats):
+    self = life_loss
+    print(self.__name__ +'...',end='\r')
     player_stats['life'] = player_stats['life'] - 1
+    print(self.__name__ +' ok\n')
     return player_stats['life']
 
 ###################
