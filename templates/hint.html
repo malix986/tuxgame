@@ -1,77 +1,58 @@
-<!doctype html>
-<html lang="it">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KS8FKC5');</script>
-    <!-- End Google Tag Manager -->  
+{% extends 'base.html' %}
+{% block title %}
+  Guess the character
+{% endblock %}
+{% block body %}
+  <div class="container">
+  <!-- HEADER --> 
+  <!-- Remaining hints -->
+  <nav class="navbar sticky-top navbar-light bg-light">
+  <span class="navbar-text">
+    Ciao {{user}}, 
+    {% if remaining == 0 %}
+    nessun indizio rimasto
+    {% else %}
+      {{ remaining }} altri indizi disponibili
+    {% endif %}
+      - {{potential_score}} punti possibili indovinando il personaggio ora
+  </span>
+  <!-- Player stats -->
+  <h5>Life: <span class="badge badge-secondary">{{life}}</span></h5>
+  <h5>Score: <span class="badge badge-secondary">{{score}}</span></h5>
+</nav>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Progress Bar -->
+<span class="border">
+  <div class="progress">
+    <div class="progress-bar bg-danger" role="progressbar" style="width: {{share}}%" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+</span>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="static/stylesheets/custom.css">
-    
-    <title>Guess the character</title>
-    <body style="text-align:center">
-    
-      <div class="container">
-         <!-- HEADER --> 
-         <!-- Remaining hints -->
-         <nav class="navbar sticky-top navbar-light bg-light">
-          <span class="navbar-text">
-            Ciao {{user}}, 
-            {% if remaining == 0 %}
-            nessun indizio rimasto
-            {% else %}
-              {{ remaining }} altri indizi disponibili
-            {% endif %}
-              - {{potential_score}} punti possibili indovinando il personaggio ora
-          </span>
-          <!-- Player stats -->
-          <h5>Life: <span class="badge badge-secondary">{{life}}</span></h5>
-          <h5>Score: <span class="badge badge-secondary">{{score}}</span></h5>
-        </nav>
-        
-        <!-- Progress Bar -->
-        <span class="border">
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: {{share}}%" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </span>
-        
-        <!-- Input answer -->
-        <form action= "answer" method="POST">
-          <div class="form-row align-items-center">
-            <div class="col-auto">
-              <label class="sr-only" for="inlineFormInput">guess</label>
-              <input size="100%" type="text" class="form-control" id="inlineFormInput" placeholder="Prova ad Indovinare" name="answer">
-            </div>
-            <div class="col-auto">
-              <label class="sr-only" for="inlineFormInputGroup">guess</label>
-            </div>
-            <div class="col-auto">
-              <button type="submit" class="btn">Conferma</button>
-            </div>
-          </div>
-        </form>
+<!-- Input answer -->
+<form action= "answer" method="POST">
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">guess</label>
+      <input size="100%" type="text" class="form-control" id="inlineFormInput" placeholder="Prova ad Indovinare" name="answer">
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">guess</label>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn mt-2">Conferma</button>
+    </div>
+  </div>
+</form>
 
-        <!-- Hint -->
-        <h2>
-        {{ show }}
-        </h2>
-        {% if remaining == 0 %}
-          <button type="button" class="btn" disabled>Indizi finiti :(</button>
-        {% else %}
-          <a href="hint" class="btn">ancora</a>
-        {% endif %}
-      </div>
-      
-    </body>
-</html>
+<!-- Hint -->
+<h2>
+{{ show }}
+</h2>
+{% if remaining == 0 %}
+  <button type="button" class="btn" disabled>Indizi finiti :(</button>
+{% else %}
+  <a href="hint" class="btn">Nuovo Indizio {{ share }}</a>
+{% endif %}
+</div>
+
+{% endblock %}

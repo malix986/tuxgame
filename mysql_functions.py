@@ -46,6 +46,7 @@ def hint_query_to_array(sql, chunks):
         array_dict = {
             'character_name': row['character_name'],
             'hint': row['hint'],
+            'hint_raw': row['hint_raw'],
             'hint_shown': row['hint_shown'],
             'hint_guessed': row['hint_guessed'],
             'hint_wrong': row['hint_wrong'],
@@ -77,6 +78,9 @@ def update_hint_wrong(character_name, hint, hint_wrong):
     print(sql)
     client.query(sql)
 
+def update_hint_description(character_name, hint, hint_raw, is_active):
+    sql = 'UPDATE tuxgame.hint_list SET hint = '+str(hint)+', is_active = '+str(is_active)+' WHERE hint_raw = "'+str(hint_raw)+'" AND character_name ="'+str(character_name)+'"'
+    client.query(sql)
 
 def set_match(player_stats):
     user = str(player_stats['username'])

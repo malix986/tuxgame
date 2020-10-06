@@ -1,47 +1,29 @@
-<!doctype html>
-<html lang="it">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KS8FKC5');</script>
-    <!-- End Google Tag Manager -->
- 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'base.html' %}
+{% block title %}
+  Thank You!
+{% endblock %}
+{% block body %}
+<div class="container">
+  <!-- HEADER --> 
+    <!-- Remaining hints -->
+    <nav class="navbar sticky-top navbar-light bg-light">
+    <span class="navbar-text">
+      Ciao {{user}}
+    </span>
+    <!-- Player stats -->
+    <h5>Life: <span class="badge badge-secondary">{{life}}</span></h5>
+    <h5>Score: <span class="badge badge-secondary">{{score}}</span></h5>
+  </nav>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="static/stylesheets/custom.css">
-
-    <title>Guess the character</title>
-    <body style="text-align:center">
+  <span class="border">
+  </span>
+  <div style="background:{{color}} !important" class="jumbotron jumbotron-fluid"> 
       <div class="container">
-        <!-- HEADER --> 
-         <!-- Remaining hints -->
-         <nav class="navbar sticky-top navbar-light bg-light">
-          <span class="navbar-text">
-            Ciao {{user}}
-          </span>
-          <!-- Player stats -->
-          <h5>Life: <span class="badge badge-secondary">{{life}}</span></h5>
-          <h5>Score: <span class="badge badge-secondary">{{score}}</span></h5>
-        </nav>
-
-        <span class="border">
-        </span>
-        <div style="background:{{color}} !important" class="jumbotron jumbotron-fluid"> 
-            <div class="container">
-              <h2 class="display-4">{{ winfail }}</h2>
-              <p class="lead">{{ esito }}</p>
-            </div>
-        </div>
-        <a href="/" class="btn">Nuova partita!</a>
-        <h2>GRAZIE PER AVER GIOCATO</h2>
+        <h2 class="display-4">{{ winfail }}</h2>
+        <p class="lead">{{ esito }}</p>
       </div>
-    </body>
-</html>
+  </div>
+  <a href="/" class="btn">Nuova partita!</a>
+  <h2>GRAZIE PER AVER GIOCATO</h2>
+</div>
+{% endblock %}

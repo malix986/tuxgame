@@ -15,10 +15,12 @@ def index():
 
    session['player_stats'] = setup.set_player_stats()   
    session['character_stats'] = setup.set_character_stats()
+   print(session['character_stats'])
 
    return render_template(
-      'index.html'
+      'index.html' 
       )
+
 
 @app.route('/hint', methods=['GET', 'POST'])
 def hint():
@@ -44,12 +46,13 @@ def hint():
       show = session['hint_stats']['hint'],
       remaining = session['hint_stats']['count']-1,
       tot_hint = len(session['character_stats']['hint_list_complete']),
-      share = session['hint_stats']['share'],
+      share = 100-session['hint_stats']['share'],
       score = session['player_stats']['score'],
       potential_score = session['hint_stats']['potential_score'],
       user = session['player_stats']['username'],
       life = session['player_stats']['life']
       )
+
 
 @app.route('/answer', methods=['GET', 'POST'])
 def answer():
@@ -101,6 +104,41 @@ def answer():
          user = session['player_stats']['username']
          )
 
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+   results = []
+   for row in session['character_stats']['hint_list_complete']:
+      results.append(dict(row))
+   fieldnames = [key for key in results[0].keys()]
+
+   return render_template(
+      'admin.html', 
+      results=results, 
+      fieldnames=fieldnames,
+      len = len,
+      character_name = session['character_stats']['name']
+      )
+
+
+@app.route('/admin_change', methods=['GET', 'POST'])
+def admin_change():
+   if request.method == 'POST':
+      hint = request.form['hint']
+      
+      results = []
+      for row in session['character_stats']['hint_list_complete']:
+         results.append(dict(row))
+      fieldnames = [key for key in results[0].keys()]
+      return render_template(
+         'admin.html', 
+         results=results, 
+         fieldnames=fieldnames,
+         len = len,
+         character_name = session['character_stats']['name'],
+         raw_hint = 2,
+         hint = hint,
+         is_active = True,
+         )
 
 if __name__ == '__main__':
    app.run(debug = True)   

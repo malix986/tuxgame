@@ -45,13 +45,13 @@ def get_random_hint(character_stats):
     random_hint = character_stats['remaining_hints'][0]
     hint_count = len(character_stats['remaining_hints'])
     hint_total = character_stats['hint_total'] 
-    hint_gone = hint_total - hint_count +1
+    hint_gone = hint_total - hint_count
     hint = random_hint['hint']
     hint_shown = random_hint['hint_shown']
     hint_guessed = random_hint['hint_guessed']
     hint_wrong = random_hint['hint_wrong']
     share = round(hint_gone/hint_total, 2)*100
-    potential_score = round(100*(1-((hint_gone-1)/hint_total)))
+    potential_score = round(100*(1-((hint_gone)/hint_total)))
 
     hint_stats = {
         'random_hint': random_hint,
