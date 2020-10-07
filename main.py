@@ -124,7 +124,12 @@ def admin():
 def admin_change():
    if request.method == 'POST':
       hint = request.form['hint']
+      hint_raw = request.form['raw_hint']
+      is_active = request.form['is_active']
+      character_name = session['character_stats']['name']
       
+      mysql_functions.update_hint_description(character_name, hint, hint_raw, is_active)
+
       results = []
       for row in session['character_stats']['hint_list_complete']:
          results.append(dict(row))
@@ -134,10 +139,10 @@ def admin_change():
          results=results, 
          fieldnames=fieldnames,
          len = len,
-         character_name = session['character_stats']['name'],
-         raw_hint = 2,
+         character_name = character_name,
+         raw_hint = hint_raw,
          hint = hint,
-         is_active = True,
+         is_active = is_active,
          )
 
 if __name__ == '__main__':

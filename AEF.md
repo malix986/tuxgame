@@ -38,5 +38,12 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 #   Local Launch
 
 export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value core/project)
+export GOOGLE_APPLICATION_CREDENTIALS: "/Users/amalinverni/Desktop/github-wikigame/my-project-1509808152396-6823ad5c6a5d.json"
+export PYTHONIOENCODING: 'utf-8'
+
 dev_appserver.py app.yaml
+
+
+# prima di deployare
+gcloud app deploy -q -v 12345
 
