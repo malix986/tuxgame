@@ -127,11 +127,13 @@ def admin_change():
       hint_raw = request.form['raw_hint']
       is_active = request.form['is_active']
       character_name = session['character_stats']['name']
-      
-      mysql_functions.update_hint_description(character_name, hint, hint_raw, is_active)
+
+      sql = mysql_functions.update_hint_description(character_name, hint, hint_raw, is_active)
+      all_hints = mysql_functions.get_character_hint_all(character_name)
+      print(all_hints)
 
       results = []
-      for row in session['character_stats']['hint_list_complete']:
+      for row in all_hints:
          results.append(dict(row))
       fieldnames = [key for key in results[0].keys()]
       return render_template(
@@ -139,10 +141,7 @@ def admin_change():
          results=results, 
          fieldnames=fieldnames,
          len = len,
-         character_name = character_name,
-         raw_hint = hint_raw,
-         hint = hint,
-         is_active = is_active,
+         sql = sql
          )
 
 if __name__ == '__main__':

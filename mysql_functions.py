@@ -26,10 +26,15 @@ def get_character_list():
 
 
 def get_character_hint(character_name):
-    sql = 'SELECT * FROM tuxgame.hint_list WHERE character_name = "' + str(character_name)+'"'
+    sql = 'SELECT * FROM tuxgame.hint_list WHERE character_name = "' + str(character_name)+'" AND is_active = True'
     array_list = hint_query_to_array(sql, 10)
     return array_list
 
+
+def get_character_hint_all(character_name):
+    sql = 'SELECT * FROM tuxgame.hint_list WHERE character_name = "' + str(character_name)+'"'
+    array_list = query_to_array(sql)
+    return array_list
 
 def query_to_array(sql):
     results = client.query(sql)
@@ -79,9 +84,10 @@ def update_hint_wrong(character_name, hint, hint_wrong):
     client.query(sql)
 
 def update_hint_description(character_name, hint, hint_raw, is_active):
-    sql = 'UPDATE tuxgame.hint_list SET hint = "'+str(hint)+'", is_active = '+str(is_active)+' WHERE hint_raw = "'+str(hint_raw)+'" AND character_name ="'+str(character_name)+'"'
-    print(sql)
+    sql = 'UPDATE tuxgame.hint_list SET hint = "'+str(hint)+'", is_active = '+str(is_active)+' WHERE trim(hint_raw) = trim("'+str(hint_raw)+'") AND character_name ="'+str(character_name)+'"'
+    print('UPDATE HINT: '+sql)
     client.query(sql)
+    return sql
 
 def set_match(player_stats):
     user = str(player_stats['username'])

@@ -25,3 +25,5 @@ def get_wiki_hints(character_name):
     return hint_list
 
 ## replace_name('Silvio Berlusconi','il mio nome è Silvio non Mario. Vivo sulle montagne. Berlusconi si chiama anche Luca')
+
+print(get_wiki_hints('Roberto Baggio'))

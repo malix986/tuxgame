@@ -15,7 +15,6 @@ def get_random_character_hints():
     hint_list = ms.get_character_hint(random_character[0])
     return hint_list
 
-
 # GET HINTS RELATED TO DEFINED CHARACTER
 def get_character_hints(character_id):
     hint_list = ms.get_character_hint(character_id)

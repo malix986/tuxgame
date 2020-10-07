@@ -47,3 +47,19 @@ dev_appserver.py app.yaml
 # prima di deployare
 gcloud app deploy -q -v 12345
 
+# hints cleanup query
+
+create or replace table `tuxgame.hint_list` as
+SELECT 
+character_name, 
+trim(REGEXP_REPLACE(hint, r"\==([^)]+)\==", "")) as hint, 
+hint_shown, 
+hint_guessed, 
+hint_wrong, 
+hint_raw, 
+CASE 
+  WHEN hint_raw like '%ISBN%' THEN FALSE
+  WHEN length(hint_raw) >= 500 THEN FALSE
+  ELSE TRUE
+END as is_active
+FROM tuxgame.hint_list
