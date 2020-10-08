@@ -144,5 +144,22 @@ def admin_change():
          sql = sql
          )
 
+
+@app.route('/admin_refresh', methods=['GET', 'POST'])
+def admin_refresh():
+      character_name = session['character_stats']['name']
+      all_hints = mysql_functions.get_character_hint_all(character_name)
+
+      results = []
+      for row in all_hints:
+         results.append(dict(row))
+      fieldnames = [key for key in results[0].keys()]
+      return render_template(
+         'admin.html', 
+         results=results, 
+         fieldnames=fieldnames,
+         len = len
+         )
+
 if __name__ == '__main__':
    app.run(debug = True)   

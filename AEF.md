@@ -41,11 +41,11 @@ export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value core/project)
 export GOOGLE_APPLICATION_CREDENTIALS: "/Users/amalinverni/Desktop/github-wikigame/my-project-1509808152396-6823ad5c6a5d.json"
 export PYTHONIOENCODING: 'utf-8'
 
-dev_appserver.py app.yaml
+dev_appserver.py app_local.yaml
 
 
 # prima di deployare
-gcloud app deploy -q -v 12345
+gcloud app deploy app.yaml -q -v 1234
 
 # hints cleanup query
 
@@ -61,5 +61,9 @@ CASE
   WHEN hint_raw like '%ISBN%' THEN FALSE
   WHEN length(hint_raw) >= 500 THEN FALSE
   ELSE TRUE
-END as is_active
+END as is_active,
+CAST(FLOOR(1000000000*RAND()) AS INT64) AS id
 FROM tuxgame.hint_list
+
+CHECK DUPLICATES
+SELECT id, count(*) as counts from tuxgame.hint_list GROUP BY 1 having counts >1

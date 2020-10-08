@@ -14,7 +14,7 @@ def set_character_name(character_name):
 
 
 def set_hint(hint, character_name):
-    sql = 'INSERT INTO tuxgame.hint_list(character_name,hint,hint_shown,hint_guessed,hint_wrong) VALUES ("' + str(character_name) + '","' + str(hint) + '",0,0,0)'
+    sql = 'INSERT INTO tuxgame.hint_list(character_name,hint,hint_shown,hint_guessed,hint_wrong,hint_raw,is_active,id) VALUES ("' + str(character_name) + '","' + str(hint) + '",0,0,0,"' + str(character_name) + '",True,CAST(FLOOR(1000000000*RAND()) AS INT64))'
     # Execute the SQL command
     client.query(sql)
 
