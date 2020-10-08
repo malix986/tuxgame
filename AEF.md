@@ -1,8 +1,8 @@
 # APP ENGINE FUNCTIONS
 
 # VIRTUAL ENV
-virtualenv --python python3 ~/envs/big_query
-source ~/envs/big_query/bin/activate
+virtualenv --python python3 ~/envs/oct_env
+source ~/envs/oct_env/bin/activate
 
 # INSTALL REQUIREMENTS
 pip install -r requirements.txt
@@ -12,6 +12,11 @@ pip3 install -r requirements.txt
 vim file.txt
 press i to edit
 press ESC :wq to save
+
+# GIT
+force quit
+git reset --hard origin/master
+
 
 # BIG QUERY
 
