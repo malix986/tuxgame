@@ -1,6 +1,8 @@
 import random_character as rc
 import random
 import main
+import time
+import datetime
 
 def set_player_stats():
     self = set_player_stats
@@ -8,7 +10,8 @@ def set_player_stats():
     player_stats = {
         'score': 0,
         'life': 2,
-        'username':'utente'
+        'username':'utente',
+        'timestamp':datetime.datetime.fromtimestamp(time.time()).isoformat()
     }
     print(self.__name__ +' ok\n')
     return player_stats

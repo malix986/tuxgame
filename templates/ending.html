@@ -26,4 +26,28 @@
   <a href="/" class="btn">Nuova partita!</a>
   <h2>GRAZIE PER AVER GIOCATO</h2>
 </div>
+<div class="card">
+  <div class="card-body">
+  <div class="mt-4">
+      <table id="proxies" class="display table responsive" style="width: 100%">
+          <thead>
+          <tr>
+              {% for header in results[0].keys() %}
+              <th>{{header}}</th>
+              {% endfor %}
+          </tr>
+          </thead>
+          <tbody>
+          {% for row in results %}
+              <tr>
+              {% for index in range(0, len(fieldnames)) %}
+                  <td>{{row[fieldnames[index]]}}</td>
+              {% endfor %}
+              </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+  </div>
+  </div>
+</div>
 {% endblock %}

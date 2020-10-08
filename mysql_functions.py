@@ -83,8 +83,8 @@ def update_hint_wrong(character_name, hint, hint_wrong):
     print(sql)
     client.query(sql)
 
-def update_hint_description(character_name, hint, hint_raw, is_active):
-    sql = 'UPDATE tuxgame.hint_list SET hint = "'+str(hint)+'", is_active = '+str(is_active)+' WHERE trim(hint_raw) = trim("'+str(hint_raw)+'") AND character_name ="'+str(character_name)+'"'
+def update_hint_description(character_name, hint, hint_id, is_active):
+    sql = 'UPDATE tuxgame.hint_list SET hint = "'+str(hint)+'", is_active = '+str(is_active)+' WHERE id = '+str(hint_id)+' AND character_name ="'+str(character_name)+'"'
     print('UPDATE HINT: '+sql)
     client.query(sql)
     return sql
@@ -92,8 +92,32 @@ def update_hint_description(character_name, hint, hint_raw, is_active):
 def set_match(player_stats):
     user = str(player_stats['username'])
     score = str(player_stats['score'])
+    timestamp = str(player_stats['timestamp'])
 
     print('New entry.....')
-    sql = 'INSERT INTO tuxgame.session_list(username,score,timestamp) VALUES ("' + user + '",' + score + ',CURRENT_TIMESTAMP)'
+    sql = 'INSERT INTO tuxgame.session_list(username,score,timestamp) VALUES ("' + user + '",' + score + ',"' + timestamp + '")'
     # Execute the SQL command
     client.query(sql)
+
+def get_ranking(player_stats):
+    user = str(player_stats['username'])
+    score = str(player_stats['score'])
+    timestamp = str(player_stats['timestamp'])
+    sql = """
+        SELECT
+            RANK() OVER (ORDER BY score desc) AS rank,
+            username,
+            extract(date from timestamp) AS data,
+            score AS punteggio
+        FROM
+            (SELECT
+                username,
+                score,
+                timestamp
+            FROM 
+                tuxgame.session_list
+            )
+    """
+    array_list = query_to_array(sql)
+    print('user: ' +user+' score: '+score+' time: '+timestamp)
+    return array_list
