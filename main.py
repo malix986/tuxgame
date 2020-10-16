@@ -1,26 +1,35 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, jsonify
 import setup
 import mysql_functions
+import numpy
 
 #https://cloud.google.com/appengine/docs/standard/python3/setting-up-environment
 
 app = Flask(__name__)
-#SESSION_TYPE = 'filesystem'
 app.secret_key = "giontravolta"
-#app.config['ENV'] = 'development'
+
+random = numpy.random.rand()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
    session.clear()
+   return render_template(
+      'index.html'
+      )
 
+
+@app.route('/load_character', methods=['POST'])
+def something():
    session['player_stats'] = setup.set_player_stats()   
    session['character_stats'] = setup.set_character_stats()
    print(session['character_stats'])
+   return jsonify('',render_template('index_button.html'))
 
-   return render_template(
-      'index.html' 
-      )
 
+@app.route('/loading', methods=['POST'])
+def something2():
+   print('load')
+   return jsonify('',render_template('loading.html', x=1))
 
 @app.route('/hint', methods=['GET', 'POST'])
 def hint():
@@ -30,6 +39,21 @@ def hint():
       session['player_stats']['username'] = user
    print('user ' + user + ' set')
 
+   return render_template(
+      'hint.html', 
+      show = "",
+      remaining = 10,
+      tot_hint = 10,
+      share = 100,
+      score = 0,
+      potential_score = 100,
+      user = session['player_stats']['username'],
+      life = session['player_stats']['life']
+      )
+
+
+@app.route('/load_hint', methods=['POST'])
+def load_hint():
    print('getting random hint')
    session['hint_stats'] = setup.get_random_hint(session['character_stats'])
    print(session['hint_stats'])
@@ -41,8 +65,7 @@ def hint():
    mysql_functions.update_hint_shown(session['character_stats']['name'], session['hint_stats']['hint'], session['hint_stats']['shown']+1)
    print('times shown: '+str(session['hint_stats']['shown']))
 
-   return render_template(
-      'hint.html', 
+   return jsonify('',render_template('show_hint.html',
       show = session['hint_stats']['hint'],
       remaining = session['hint_stats']['count']-1,
       tot_hint = len(session['character_stats']['hint_list_complete']),
@@ -50,8 +73,8 @@ def hint():
       score = session['player_stats']['score'],
       potential_score = session['hint_stats']['potential_score'],
       user = session['player_stats']['username'],
-      life = session['player_stats']['life']
-      )
+      life = session['player_stats']['life']      
+      ))
 
 
 @app.route('/answer', methods=['GET', 'POST'])

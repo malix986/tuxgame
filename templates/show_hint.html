@@ -1,0 +1,48 @@
+<div class="container" id='hint_content'>
+    <!-- HEADER --> 
+    <!-- Remaining hints -->
+    <nav class="navbar sticky-top navbar-light bg-light">
+      <span class="navbar-text">
+        Ciao {{user}}, 
+        {% if remaining == 0 %}
+        nessun indizio rimasto
+        {% else %}
+          {{ remaining }} altri indizi disponibili
+        {% endif %}
+          - {{potential_score}} punti possibili indovinando il personaggio ora
+      </span>
+      <!-- Player stats -->
+      <h5>Life: <span class="badge badge-secondary">{{life}}</span></h5>
+      <h5>Score: <span class="badge badge-secondary">{{score}}</span></h5>
+    </nav>
+
+    <!-- Progress Bar -->
+    <span class="border">
+      <div class="progress">
+        <div class="progress-bar bg-danger" role="progressbar" style="width: {{share}}%" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </span>
+  
+    <!-- Input answer -->
+        <div class="row align-items-center">
+            <form action= "answer" method="POST" id='form-aggio'>
+            <input size="150%" type="text" class="form-control" placeholder="Prova ad Indovinare" name="answer"> 
+            </form>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-sm"><button type="submit" form='form-aggio' class="btn mt-2" style="width:100%">Conferma</button></div>
+            <div class="col-sm">
+                {% if remaining == 0 %}
+                    <button type="button" class="btn mt-2" style="width:100%" disabled>Indizi finiti :(</button>
+                {% else %}
+                    <button onClick="loadHint();" class="btn mt-2" value="Nuovo Indizio" style="width:100%"> Nuovo Indizio! </button>
+                {% endif %}
+            </div>
+        </div>
+
+    <!-- Hint -->
+    <h2 id='hint_description'>
+        {{ show }}
+    </h2>
+
+</div>

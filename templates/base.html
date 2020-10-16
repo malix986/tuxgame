@@ -12,15 +12,20 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/main.js')}}"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom CSS -->
-    <link type="text/css" rel="stylesheet" href="static/stylesheets/custom.css">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom.css')}}">
     {% block head %} {% endblock %}
 
         <title>{% block title %} {% endblock %}</title>
     </head>
-    <body style="text-align:center">{% block body %} {% endblock %}</body>
-    {% block javascript %} {% endblock %}
+    <body style="text-align:center">
+      {% block body %} {% endblock %}
+      {% block javascript %} {% endblock %}
+    </body>
 </html>
