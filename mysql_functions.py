@@ -20,14 +20,26 @@ def set_hint(hint, character_name):
 
 
 def get_character_list():
+    self = get_character_list
+    print(self.__name__ +'...')
     sql = "SELECT * FROM tuxgame.character_list"
-    array_list = query_to_array(sql)
-    return array_list
+    results = client.query(sql)
+    character_list = []
+    for row in results:
+        array_dict = {
+            'name': row['name']
+        }
+        character_list.append(array_dict)
+    print(self.__name__ +' ok\n')
+    return character_list
 
 
 def get_character_hint(character_name):
+    self = get_character_hint
+    print(self.__name__ +'...')
     sql = 'SELECT * FROM tuxgame.hint_list WHERE character_name = "' + str(character_name)+'" AND is_active = True'
     array_list = hint_query_to_array(sql, 10)
+    print(self.__name__ +' ok\n')
     return array_list
 
 
@@ -45,6 +57,8 @@ def query_to_array(sql):
 
 
 def hint_query_to_array(sql, chunks):
+    self = hint_query_to_array
+    print(self.__name__ +'...')    
     results = client.query(sql)
     array_list = []
     for row in results:
@@ -60,10 +74,11 @@ def hint_query_to_array(sql, chunks):
         array_list.append(array_dict)
     sorted_array = sorted(array_list, key=lambda k: k['easyness'])
     step = math.floor(len(sorted_array)/chunks)
-    print('Full Array #' + str(len(sorted_array)) + ' divided in ' + str(chunks) + ' chunks of '+str(step))
+    print('Full Array of #' + str(len(sorted_array)) + ' hints divided in ' + str(chunks) + ' chunks of '+str(step))
     # Yields successive 'n' sized chunks from list 'list_name'
     for i in range(0, len(sorted_array), step):
         yield sorted_array[i:i + step]
+    print(self.__name__ +' ok\n')
     return sorted_array
 
 

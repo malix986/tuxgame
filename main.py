@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session, jsonify
 import setup
 import mysql_functions
+import random_character as rc
 import numpy
 
 #https://cloud.google.com/appengine/docs/standard/python3/setting-up-environment
@@ -18,34 +19,38 @@ def index():
       )
 
 
-@app.route('/load_character', methods=['POST'])
-def something():
-   session['player_stats'] = setup.set_player_stats()   
-   session['character_stats'] = setup.set_character_stats()
-   print(session['character_stats'])
-   return jsonify('',render_template('index_button.html'))
+# @app.route('/load_character', methods=['POST'])
+# def load_character():
+#    session['player_stats'] = setup.set_player_stats()
+#    if request.form['name']:
+#       user = request.form['name']
+#       session['player_stats']['username'] = user 
+#       print('username updated to _____________'+ user)
+#    session['character_list'] = mysql_functions.get_character_list()
+#    set_new_round()
+#    return jsonify('',render_template('index_loader.html'))
 
-
-@app.route('/loading', methods=['POST'])
-def something2():
-   print('load')
-   return jsonify('',render_template('loading.html', x=1))
 
 @app.route('/hint', methods=['GET', 'POST'])
 def hint():
-   user = session['player_stats']['username']
-   if request.form.get('user'):
-      user = request.form.get('user')
-      session['player_stats']['username'] = user
-   print('user ' + user + ' set')
+   try:
+      len(session['player_stats'])
+   except:
+      session['player_stats'] = setup.set_player_stats()
+      if request.form['user']:
+         user = request.form['user']
+         session['player_stats']['username'] = user 
+         print('username updated to _____________'+ user)
+      session['character_list'] = mysql_functions.get_character_list()
+   set_new_round()
 
    return render_template(
       'hint.html', 
       show = "",
-      remaining = 10,
-      tot_hint = 10,
+      remaining = session['character_stats']['hint_total']-1,
+      tot_hint = len(session['character_stats']['hint_list_complete']),
       share = 100,
-      score = 0,
+      score = session['player_stats']['score'],
       potential_score = 100,
       user = session['player_stats']['username'],
       life = session['player_stats']['life']
@@ -125,7 +130,7 @@ def answer():
          len = len
          )
       else:
-         session['character_stats'] = setup.set_character_stats()
+         set_new_round()
          return render_template(
          'answer.html',
          esito = esito,
@@ -193,6 +198,12 @@ def admin_refresh():
          fieldnames=fieldnames,
          len = len
          )
+
+
+def set_new_round():
+   random_character = rc.get_random_character(session['character_list'])
+   session['character_list'].remove(random_character)
+   session['character_stats'] = setup.set_character_stats(random_character)
 
 
 if __name__ == '__main__':

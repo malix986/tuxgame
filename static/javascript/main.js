@@ -2,6 +2,37 @@ function add(a,b) {
     return a+b
 }
 
+// $(document).ready(function() {
+//    $('#user-form-button').on('submit', function(event) {
+//        $.ajax({
+//            data : {
+//                name : $("#user").val()
+//            },
+//            type : 'POST',
+//            url : '/load_character'
+//        })
+//    });
+// });
+
+function speriamobene(){
+   load_character();
+   goToHint();
+}
+
+function load_character(){
+   $.ajax({
+      data : {
+          name : $("#user").val()
+      },
+      type : 'POST',
+      url : '/load_character'
+  })
+}
+
+function goToHint(){
+   window.location.href = '/hint';
+}
+
 function loadDecimal(){
     $.ajax({
        url: "/random_module",
@@ -13,16 +44,18 @@ function loadDecimal(){
     })
  }
 
-function loadCharacter(){
+ function loadCharacter(){
    $.ajax({
       url: "/load_character",
       type: "POST",
       dataType: "json",
       success: function(data){
-         $(loading_button).replaceWith(data)
+         $(hint_content).replaceWith(data)
       }  
    })
 }
+
+
 
 function loadHint(){
    $.ajax({
