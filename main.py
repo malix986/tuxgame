@@ -42,6 +42,7 @@ def hint():
          session['player_stats']['username'] = user 
          print('username updated to _____________'+ user)
       session['character_list'] = mysql_functions.get_character_list()
+      session['ranking'] = mysql_functions.get_session_ranking()
    set_new_round()
 
    return render_template(
@@ -111,7 +112,8 @@ def answer():
       life = session['player_stats']['life']
       if life < 1:
          mysql_functions.set_match(session['player_stats'])
-         ranking = mysql_functions.get_ranking(session['player_stats'])
+         ranking_all = session['ranking'] # mysql_functions.get_ranking(session['player_stats'])
+         ranking = setup.get_ranking(ranking_all,session['player_stats'],7)
          results = []
          for row in ranking:
             results.append(dict(row))

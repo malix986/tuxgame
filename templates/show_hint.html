@@ -1,6 +1,6 @@
 <div class="container" id='hint_content'>
     
-      <nav>
+      <nav class="bkg_header_footer">
         <div class="nav-wrapper" style="text-align:left">
           <a class="hello_user">Ciao {{user}}</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -10,19 +10,18 @@
         </div>
       </nav>
 
-    <p>
+    <!-- Progress Bar -->
+    <span class="border">
+      <p>
         {% if remaining == 0 %}
         nessun indizio rimasto
         {% else %}
           {{ remaining }} altri indizi disponibili
         {% endif %}
           - {{potential_score}} punti possibili indovinando il personaggio ora
-    </p>
-
-    <!-- Progress Bar -->
-    <span class="border">
+      </p>
       <div class="progress">
-        <div class="progress-bar bg-danger" role="progressbar" style="width: {{share}}%" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="determinate" style="width: {{share}}%"></div>
       </div>
     </span>
 
@@ -31,11 +30,11 @@
         {{ show }}
     </h2>
 
-    <footer class="page-footer">
+    <footer class="page-footer bkg_header_footer">
       <div class="container">
         <div class="row">
           <form action= "answer" method="POST" id='form-aggio'>
-            <input size="100%" type="text" class="form-control" placeholder="Prova ad Indovinare" name="answer"> 
+            <input size="100%" type="text" class="form-control" placeholder="Prova ad Indovinare" name="answer" style="text-align: center;"> 
           </form>
         </div>
         <div class="row">

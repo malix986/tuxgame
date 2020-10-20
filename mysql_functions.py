@@ -136,3 +136,32 @@ def get_ranking(player_stats):
     array_list = query_to_array(sql)
     print('user: ' +user+' score: '+score+' time: '+timestamp)
     return array_list
+
+
+def get_session_ranking():
+    sql = """
+        SELECT
+            RANK() OVER (ORDER BY score desc) AS rank,
+            username,
+            extract(date from timestamp) AS data,
+            score AS punteggio
+        FROM
+            (SELECT
+                username,
+                score,
+                timestamp
+            FROM 
+                tuxgame.session_list
+            )
+    """
+    results = query_to_array(sql)
+    array_list = []
+    for row in results:
+        array_dict = {
+            'rank': row['rank'],
+            'username': row['username'],
+            'data': row['data'],
+            'punteggio': row['punteggio']
+        }
+        array_list.append(array_dict)
+    return array_list

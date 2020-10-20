@@ -1,3 +1,8 @@
+:root {
+  --main-color: #ff9900;
+  --main-color-light: #fcc36f;
+}
+
 body {
   display: flex;
   min-height: 100vh;
@@ -19,6 +24,57 @@ main {
     padding-bottom: 0px;
     padding-left: 10px;
 }
+
+.bkg_header_footer {
+  background-color: var(--main-color) !important;
+}
+
+.page-footer {
+  padding-top: 8px;
+  color: #fff;
+  background-color: var(--main-color);
+  padding-bottom: 1px;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+}
+
+.form-control {
+  color: #fff;
+}
+
+.form-control:focus {
+  border-bottom: 1px solid #fff
+}
+
+.form-control-hp {
+  border-bottom: 3px solid var(--main-color) !important;
+}
+
+.form-control-hp:focus {
+  border-bottom: 3px solid var(--main-color-light) !important;
+}
+
+.btn {
+  background-color: var(--main-color) !important;
+}
+
+.btn:hover {
+  background-color:var(--main-color-light) !important;
+}
+
+/* PROGRESS BAR */
+.progress {
+  background-color: #e8e8e8;
+}
+
+.progress .determinate {
+  background-color: var(--main-color) !important;
+}
+
 /* h1 {
   color:  #ff8000;
   padding-top: 20px;
@@ -28,7 +84,6 @@ h2 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
 
 .btn {
   background-color:  #ff8000;

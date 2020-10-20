@@ -99,3 +99,29 @@ def life_loss(player_stats):
     print(self.__name__ +' ok\n')
     return player_stats['life']
 
+
+def get_ranking(ranking,user,results):
+    
+    player_stats = {
+        'data': 'TODAY',
+        'punteggio': user['score'],
+        'rank':'YOU ARE HERE',
+        'username':user['username']
+    }
+
+    useful_rank = [] 
+    top_list = []
+    bottom_list = []
+    for entry in ranking:
+        if entry['punteggio'] >= player_stats['punteggio']:
+            top_list.append(entry)
+        if entry['punteggio'] < player_stats['punteggio']:
+            bottom_list.append(entry)
+    for limited in top_list[-results:]:
+        useful_rank.append(limited)
+    useful_rank.append(player_stats)
+    for limited in bottom_list[:results]:
+        useful_rank.append(limited)
+
+    return useful_rank
+
