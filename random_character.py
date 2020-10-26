@@ -11,12 +11,6 @@ def get_random_character(character_list):
     return random_character
 
 
-# GET HINTS RELATED TO RANDOM CHARACTER
-# def get_random_character_hints():
-#     random_character = get_random_character()
-#     hint_list = ms.get_character_hint(random_character[0])
-#     return hint_list
-
 # GET HINTS RELATED TO DEFINED CHARACTER
 def get_character_hints(char_name):
     hint_list = ms.get_character_hint(char_name)

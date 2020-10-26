@@ -1,61 +1,6 @@
-function add(a,b) {
-    return a+b
-}
-
-// $(document).ready(function() {
-//    $('#user-form-button').on('submit', function(event) {
-//        $.ajax({
-//            data : {
-//                name : $("#user").val()
-//            },
-//            type : 'POST',
-//            url : '/load_character'
-//        })
-//    });
-// });
-
-function speriamobene(){
-   load_character();
-   goToHint();
-}
-
-function load_character(){
-   $.ajax({
-      data : {
-          name : $("#user").val()
-      },
-      type : 'POST',
-      url : '/load_character'
-  })
-}
-
 function goToHint(){
-   window.location.href = '/hint';
+   setTimeout(() => {  window.location.href = '/hint'; }, 1000);
 }
-
-function loadDecimal(){
-    $.ajax({
-       url: "/random_module",
-       type: "POST",
-       dataType: "json",
-       success: function(data){
-          $(random_update).replaceWith(data)
-       }
-    })
- }
-
- function loadCharacter(){
-   $.ajax({
-      url: "/load_character",
-      type: "POST",
-      dataType: "json",
-      success: function(data){
-         $(hint_content).replaceWith(data)
-      }  
-   })
-}
-
-
 
 function loadHint(){
    $.ajax({
@@ -68,13 +13,28 @@ function loadHint(){
    })
 }
 
-function loadCharacter2(){
+
+function loadPlayer(_callback){
    $.ajax({
-      url: "/loading",
+      url: "/load_player",
       type: "POST",
       dataType: "json",
       success: function(data){
-         $(loading_icon).replaceWith(data)
+         $(player_content).replaceWith(data)
       }
-   })
+   });
+}
+
+function firstFunction(_callback){
+   // do some asynchronous work
+   // and when the asynchronous stuff is complete
+   _callback();    
+}
+
+function secondFunction(){
+   // call first function and pass in a callback function which
+   // first function runs when it has completed
+   firstFunction(function() {
+       console.log('huzzah, I\'m done!');
+   });    
 }

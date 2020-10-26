@@ -18,31 +18,32 @@ def index():
       'index.html'
       )
 
-
-# @app.route('/load_character', methods=['POST'])
-# def load_character():
-#    session['player_stats'] = setup.set_player_stats()
-#    if request.form['name']:
-#       user = request.form['name']
-#       session['player_stats']['username'] = user 
-#       print('username updated to _____________'+ user)
-#    session['character_list'] = mysql_functions.get_character_list()
-#    set_new_round()
-#    return jsonify('',render_template('index_loader.html'))
-
+@app.route('/load_player', methods=['GET', 'POST'])
+def load_player():
+   session['player_stats'] = setup.set_player_stats()
+   if request.form['user']:
+      user = request.form['user']
+      session['player_stats']['username'] = user 
+   session['character_list'] = mysql_functions.get_character_list()
+   session['ranking'] = mysql_functions.get_session_ranking()
+   print('eureka')
+   return render_template(
+      'load_player.html'
+      )
 
 @app.route('/hint', methods=['GET', 'POST'])
 def hint():
    try:
       len(session['player_stats'])
+      print('eureka2')
    except:
       session['player_stats'] = setup.set_player_stats()
       if request.form['user']:
          user = request.form['user']
          session['player_stats']['username'] = user 
-         print('username updated to _____________'+ user)
       session['character_list'] = mysql_functions.get_character_list()
       session['ranking'] = mysql_functions.get_session_ranking()
+      print('aio')
    set_new_round()
 
    return render_template(

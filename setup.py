@@ -116,6 +116,7 @@ def get_ranking(ranking,user,results):
         if entry['punteggio'] >= player_stats['punteggio']:
             top_list.append(entry)
         if entry['punteggio'] < player_stats['punteggio']:
+            entry['rank'] = entry['rank']+1
             bottom_list.append(entry)
     for limited in top_list[-results:]:
         useful_rank.append(limited)

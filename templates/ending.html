@@ -6,14 +6,15 @@
 <div class="container">
   <!-- HEADER --> 
     <!-- Remaining hints -->
-    <nav class="navbar sticky-top navbar-light bg-light">
-    <span class="navbar-text">
-      Ciao {{user}}
-    </span>
-    <!-- Player stats -->
-    <h5>Life: <span class="badge badge-secondary">{{life}}</span></h5>
-    <h5>Score: <span class="badge badge-secondary">{{score}}</span></h5>
-  </nav>
+    <nav class="bkg_header_footer">
+      <div class="nav-wrapper" style="text-align:left">
+        <a class="hello_user">Ciao {{user}}</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a>Life: {{life}}</a></li>
+          <li><a>Score: {{score}}</a></li>
+        </ul>
+      </div>
+    </nav>
 
   <span class="border">
   </span>

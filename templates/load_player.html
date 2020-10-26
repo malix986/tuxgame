@@ -4,14 +4,12 @@
 {% endblock %}
 {% block body %}
 
-  <div class="container" id='hint_content'>
-  
+  <div class="container" id='player_content'>
   <!-- Hint Placeholder-->
-    <img src="{{ url_for('static', filename='images/spinner.gif') }}" alt="loading">
- 
+    <img src="{{ url_for('static', filename='images/spinner-grey.gif') }}" alt="loading">
   </div>
 {% endblock %}
 
 {% block javascript %} 
-  <script>loadHint()</script>
+  <script>goToHint()</script>
 {% endblock %}
