@@ -202,6 +202,13 @@ def admin_refresh():
          len = len
          )
 
+@app.route('/html5template', methods=['GET', 'POST'])
+def html5template():
+      
+      return render_template(
+         'html5template.html'
+         )
+
 
 def set_new_round():
    random_character = rc.get_random_character(session['character_list'])

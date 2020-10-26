@@ -1,0 +1,140 @@
+:root {
+  --main-color: #ff9900;
+  --main-color-light: #fcc36f;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.hello_user {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.8rem;
+    padding: 0;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+}
+
+.bkg_header_footer {
+  background-color: var(--main-color) !important;
+}
+
+.page-footer {
+  padding-top: 8px;
+  color: #fff;
+  background-color: var(--main-color);
+  padding-bottom: 1px;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+}
+
+.form-control {
+  color: #fff;
+}
+
+.form-control:focus {
+  border-bottom: 1px solid #fff
+}
+
+.form-control-hp {
+  border-bottom: 3px solid var(--main-color) !important;
+}
+
+.form-control-hp:focus {
+  border-bottom: 3px solid var(--main-color-light) !important;
+}
+
+.btn {
+  background-color: var(--main-color) !important;
+}
+
+.btn:hover {
+  background-color:var(--main-color-light) !important;
+}
+
+/* PROGRESS BAR */
+.progress {
+  background-color: #e8e8e8;
+}
+
+.progress .determinate {
+  background-color: var(--main-color) !important;
+}
+
+/* h1 {
+  color:  #ff8000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+h2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  background-color:  #ff8000;
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}  */
+
+/* PROGRESS BAR */
+/* .bg-danger {
+  background-color: #ff8000!important;
+  background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+  background-size: 1rem 1rem;
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+.progress-bar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+
+  text-align: left;
+  white-space: nowrap;
+  transition: width .6s ease;
+}
+
+.progress {
+  display: -ms-flexbox;
+  display: flex;
+  height: 1rem;
+  overflow: hidden;
+  font-size: .75rem;
+  color: #fff;
+  border-radius: .25rem;
+} */
+
+/* INPUT */
+/* .form-control {
+  text-align: center;
+  border: 1px solid #ff8000;
+}
+
+#spaced {
+  padding-top: 20px;
+  padding-bottom: 20px;
+} */

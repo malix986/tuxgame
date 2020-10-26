@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KS8FKC5');</script>
+    <!-- End Google Tag Manager -->
+
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+
+		<meta name="keywords" content="Online Game Indovina chi" />
+		<meta name="description" content="Tuxgame - Indovinali tutti">
+		<meta name="author" content="Malix">
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800&display=swap" rel="stylesheet" type="text/css">
+
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/bootstrap/css/bootstrap.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/fontawesome-free/css/all.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/animate/animate.compat.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/simple-line-icons/css/simple-line-icons.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/owl.carousel/assets/owl.carousel.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/owl.carousel/assets/owl.theme.default.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/magnific-popup/magnific-popup.min.css') }}">
+
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/theme.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/theme-elements.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/theme-blog.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/theme-shop.css') }}">
+
+		<!-- Current Page CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/rs-plugin/css/settings.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/rs-plugin/css/layers.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/vendor/rs-plugin/css/navigation.css') }}">
+		
+		<!-- Demo CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/demo-sass.css') }}">
+
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/skin-sass.css') }}"> 
+
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/custom.css') }}">
+
+		<!-- Head Libs -->
+		<script src="{{ url_for('static', filename='stylesheets/vendor/modernizr/modernizr.min.js') }}"></script>
+
+	</head>
+    {% block head %} {% endblock %}
+
+  <title>{% block title %} {% endblock %}</title>
+
+  {% block body %} {% endblock %}
+
+  <!-- Vendor -->
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery.appear/jquery.appear.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery.cookie/jquery.cookie.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/popper/umd/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/common/common.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery.validation/jquery.validate.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery.gmap/jquery.gmap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/jquery.lazyload/jquery.lazyload.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/isotope/jquery.isotope.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/vide/jquery.vide.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/vivus/vivus.min.js') }}"></script>
+
+  <!--(remove-empty-lines-end)-->
+
+  <!-- Theme Base, Components and Settings -->
+  <script src="{{ url_for('static', filename='javascript/theme.js') }}"></script>
+
+  <!-- Current Page Vendor and Views -->
+  <script src="{{ url_for('static', filename='stylesheets/vendor/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='stylesheets/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+
+  <!-- Demo -->
+  <script src="{{ url_for('static', filename='javascript/demos/demo-sass.js') }}"></script>
+  
+  <!-- Current Page Vendor and Views -->
+  <script src="{{ url_for('static', filename='javascript/views/view.contact.js') }}"></script>
+
+  <!-- Theme Custom -->
+  <script src="{{ url_for('static', filename='javascript/custom.js') }}"></script>
+
+
+  <!-- Theme Initialization Files -->
+  <script src="{{ url_for('static', filename='javascript/theme.init.js') }}"></script>
+  <!-- Custom Javascript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='javascript/main.js')}}"></script>
+  <!-- necessary script to execute jQuery code -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+  <!-- jQuery validation is not included in the script above, so needs to be explicitly included -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <!-- Bootstrap HTML framework -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Materialize CSS framework -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+  {% block scripts %} {% endblock %}
+  
+</html>
