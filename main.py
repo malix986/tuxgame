@@ -209,6 +209,19 @@ def html5template():
          'html5template.html'
          )
 
+@app.route('/hint_dummy', methods=['GET', 'POST'])
+def hint_dummy():
+      
+      return render_template(
+         'hint_dummy.html'
+         ) 
+
+@app.route('/answer_dummy', methods=['GET', 'POST'])
+def answer_dummy():
+      
+      return render_template(
+         'answer_dummy.html'
+         ) 
 
 def set_new_round():
    random_character = rc.get_random_character(session['character_list'])

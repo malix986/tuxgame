@@ -1,0 +1,24 @@
+{% extends 'game_page.html' %}
+{% block title %}
+   Answer Dummy | Test
+{% endblock %}
+
+{% block content %}
+								
+<div class="card border-1 alert-success">
+	<div class="card-body">										
+		<h4 class="card-title mt-2 mb-1 text-4 font-weight-bold">HAI VINTO!</h4>
+		<p class="card-text">Qui ci finirà l'esito</p>
+	</div>
+</div>
+
+<div class="card border-2 alert-danger">
+	<div class="card-body">
+		<h4 class="card-title mt-2 mb-1 text-4 font-weight-bold">HAI PERSO!</h4>
+		<p class="card-text">Qui ci finirà l'esito</p>
+	</div>
+</div>
+
+<a href="/hint" class="btn btn-light mb-2 mt-2">CONTINUA!</a>
+
+{% endblock %}

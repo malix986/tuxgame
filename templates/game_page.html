@@ -1,0 +1,57 @@
+{% extends 'common.html' %}
+{% block title %}
+{% endblock %}
+
+{% block body %}
+	<body data-spy="scroll" data-target=".header-nav-main nav" data-offset="80">
+		<div class="body">
+			<header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': false, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 80}">
+				<div class="header-body border-top-0 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
+					<div class="header-container container-fluid px-lg-4">
+						<div class="header-row px-lg-3">
+							<div class="col-2">
+								<div class="header-row">
+									<div class="header-logo header-logo-sticky-change" style="width: 82px; height: 40px;">
+										<a href="index.html">
+											<img class="header-logo-non-sticky opacity-0" alt="Porto" width="70" height="40" src="{{ url_for('static', filename='images/T.png') }}">
+											<img class="header-logo-sticky opacity-0" alt="Porto" width="82" height="40" src="img/logo-default-slim.png">
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-6 text-left">
+								<p class="inverted text-4">Name </p>
+							</div>
+							<div class="col-2 text-center">
+								<p class="inverted text-4">Lifes: </p>
+							</div>
+							<div class="col-2 text-center">
+								<p class="inverted text-4">Score: </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div role="main" class="main">
+				<section class="section bg-primary curved-border position-relative border-0 m-0" style="height: 100vh;" id="intro">
+                    <div class="container justify-content-center pt-3 mt-3">
+						<div class="row justify-content-center pt-3 mt-3">
+							<div class="col-lg-7 text-center pt-3">
+                                
+                                {% block content %} {% endblock%}
+
+							</div>
+						</div>
+					</div>
+					<div class="custom-animated-circles">
+						<div class="circle"></div>
+						<div class="circle"></div>
+						<div class="circle"></div>
+						<div class="circle"></div>
+					</div>
+				</section>
+			</div> 
+		</div>
+   </body>
+
+{% endblock %}
