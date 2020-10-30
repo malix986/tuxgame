@@ -223,6 +223,13 @@ def answer_dummy():
          'answer_dummy.html'
          ) 
 
+@app.route('/ending_dummy', methods=['GET', 'POST'])
+def ending_dummy():
+      
+      return render_template(
+         'ending_dummy.html'
+         ) 
+
 def set_new_round():
    random_character = rc.get_random_character(session['character_list'])
    session['character_list'].remove(random_character)

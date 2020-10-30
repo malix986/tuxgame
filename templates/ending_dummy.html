@@ -1,0 +1,57 @@
+{% extends 'game_page.html' %}
+{% block title %}
+   Ending Dummy | Test
+{% endblock %}
+
+{% block content %}
+
+<div class="card border-1 alert-success">
+	<div class="card-body">										
+		<h4 class="card-title mt-2 mb-1 text-4 font-weight-bold">HAI VINTO!</h4>
+		<p class="card-text">Qui ci finirà l'esito</p>
+	</div>
+</div>
+
+<div class="card border-2 alert-danger">
+	<div class="card-body">
+		<h4 class="card-title mt-2 mb-1 text-4 font-weight-bold">HAI PERSO!</h4>
+		<p class="card-text">Qui ci finirà l'esito</p>
+	</div>
+</div>
+
+<h2 class="mt-4">GRAZIE PER AVER GIOCATO!</h2>
+<a href="/" class="btn btn-light mb-2 mt-2">GIOCA ANCORA</a>
+
+
+  <div class="mt-4">
+      <table id="proxies" class="display table responsive table-hover bg-color-primary text-white" style="width: 100%">
+          <thead>
+          <tr>
+              <th>A</th>
+              <th>A</th>
+              <th>B</th>
+          </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>x</td>
+                <td>x</td>
+                <td>x</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+
+
+{% endblock %}
+
