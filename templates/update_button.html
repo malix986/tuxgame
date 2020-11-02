@@ -1,0 +1,7 @@
+<div id="update_button">
+    {% if remaining == 0 %}
+        <button type="button" class="btn btn-light mb-2" style="width:100%" disabled>Indizi finiti :(</button>
+    {% else %}
+        <button onClick="loadHint();" class="btn btn-light mb-2" value="Nuovo Indizio" style="width:100%"> Nuovo Indizio! </button>
+    {% endif %}
+</div>

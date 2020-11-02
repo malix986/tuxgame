@@ -1,30 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'game_page.html' %}
 {% block title %}
-  Answer
+   Answer Dummy | Test
 {% endblock %}
-{% block body %}
-<div class="container">
-    
-  <!-- HEADER --> 
-    <!-- Remaining hints -->
-    <nav class="bkg_header_footer">
-      <div class="nav-wrapper" style="text-align:left">
-        <a class="hello_user">Ciao {{user}}</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a>Life: {{life}}</a></li>
-          <li><a>Score: {{score}}</a></li>
-        </ul>
-      </div>
-    </nav>
 
-  <span class="border">
-  </span>
-  <div style="background:{{color}} !important" class="jumbotron jumbotron-fluid"> 
-      <div class="container">
-        <h2 class="display-4">{{ winfail }}</h2>
-        <p class="lead">{{ esito }}</p>
-      </div>
-  </div>
-  <a href="/hint" class="btn">CONTINUA!</a>
+{% block content %}
+								
+<div class="card border-1 alert-{{color}} mb-2">
+	<div class="card-body">										
+		<h4 class="card-title mt-2 mb-1 text-4 font-weight-bold">{{ winfail }}</h4>
+		<p class="card-text">{{ esito }}</p>
+	</div>
 </div>
+
+<a href="/hint" class="btn btn-light mb-2 mt-2">CONTINUA!</a>
+<script>updateUserStats()</script>
+
 {% endblock %}

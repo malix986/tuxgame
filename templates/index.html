@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<body data-spy="scroll" data-target=".header-nav-main nav" data-offset="80">
+	<body data-spy="scroll" data-target=".header-nav-main nav" data-offset="80" class="bg-color-primary">
 		<div class="body">
 			<header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': false, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
 				<div class="header-body border-top-0 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
@@ -71,15 +71,23 @@
 						<img src="img/demos/sass/icons/icon-6.png" class="img-fluid" alt="" data-plugin-float-element data-plugin-options="{'startPos': 'none', 'speed': 2.5, 'transition': true, 'horizontal': true}" />
 					</div>
 
+					<!-- CONTENT -->
 					<div class="container pt-5 mt-5">
 						<div class="row justify-content-center pt-5 mt-5">
 							<div class="col-lg-7 text-center pt-3">
+								<div class="form-row">
+									<div class="bounce-loader">
+										<div class="bounce1"></div>
+										<div class="bounce2"></div>
+										<div class="bounce3"></div>
+									</div>
+								</div>
 								<h1 class="text-color-light font-weight-extra-bold text-12 line-height-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Tuxgame!</h1>
 								<div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">
 									<p class="text-color-light opacity-6 text-5 pb-3 mb-4">Scegli uno username e...inizia!</p>
 								</div>
 								<div class="col-lg-12">
-									<form action="load_player" method="POST" id="user-form-button" class="custom-form-style-1">
+									<form action="hint" method="POST" id="user-form-button" class="custom-form-style-1">
 										<div class="form-row">
 											<div class="form-group col mb-2 appear-animation text-center" data-loading-text="Loading..." data-appear-animation="fadeInRightShorter" data-appear-animation-delay="900">
 												<input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control text-center" name="user" id="user" placeholder="Username" required>
@@ -95,6 +103,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="custom-animated-circles">
 						<div class="circle"></div>
 						<div class="circle"></div>

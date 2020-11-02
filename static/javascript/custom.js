@@ -14,7 +14,28 @@ function goToHint(){
        }
     })
  }
- 
+
+ function updateUserStats(){
+   $.ajax({
+      url: "/update_user_stats",
+      type: "POST",
+      dataType: "json",
+      success: function(data){
+         $(dynamic_header).replaceWith(data)
+      }
+   })
+}
+
+function updateButton(){
+   $.ajax({
+      url: "/update_button",
+      type: "POST",
+      dataType: "json",
+      success: function(data){
+         $(update_button).replaceWith(data)
+      }
+   })
+}
  
  function loadPlayer(_callback){
     $.ajax({

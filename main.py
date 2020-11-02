@@ -83,6 +83,21 @@ def load_hint():
       life = session['player_stats']['life']      
       ))
 
+@app.route('/update_user_stats', methods=['POST'])
+def update_user_stats():
+
+   return jsonify('',render_template('update_user_stats.html',
+      score = session['player_stats']['score'],
+      user = session['player_stats']['username'],
+      life = session['player_stats']['life']      
+      ))
+
+@app.route('/update_button', methods=['POST'])
+def update_button():
+
+   return jsonify('',render_template('update_button.html',
+      remaining = session['hint_stats']['count']-1 
+      ))
 
 @app.route('/answer', methods=['GET', 'POST'])
 def answer():
@@ -91,7 +106,7 @@ def answer():
       l_answer = str(answer).lower()
       char_name = str(session['character_stats']['name']).lower()
       if l_answer == char_name:
-         color = '#d4edda'
+         color = 'success' #'#d4edda'
          winfail = 'COMPLIMENTI!'
          esito = '...era proprio '+session['character_stats']['name']
          print(session['hint_stats'])
@@ -102,7 +117,7 @@ def answer():
          print('score dopo')
          print(session['player_stats']['score'])
       else:
-         color = '#f8d7da'
+         color = 'danger' #'#f8d7da'
          winfail = 'PECCATO!'
          esito = 'Mi dispiace, hai risposto '+ answer + ', mentre la risposta corretta era '+ session['character_stats']['name']
          print(session['hint_stats'])
@@ -202,32 +217,11 @@ def admin_refresh():
          len = len
          )
 
-@app.route('/html5template', methods=['GET', 'POST'])
-def html5template():
-      
-      return render_template(
-         'html5template.html'
-         )
-
 @app.route('/hint_dummy', methods=['GET', 'POST'])
 def hint_dummy():
       
       return render_template(
          'hint_dummy.html'
-         ) 
-
-@app.route('/answer_dummy', methods=['GET', 'POST'])
-def answer_dummy():
-      
-      return render_template(
-         'answer_dummy.html'
-         ) 
-
-@app.route('/ending_dummy', methods=['GET', 'POST'])
-def ending_dummy():
-      
-      return render_template(
-         'ending_dummy.html'
          ) 
 
 def set_new_round():

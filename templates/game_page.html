@@ -3,7 +3,7 @@
 {% endblock %}
 
 {% block body %}
-	<body data-spy="scroll" data-target=".header-nav-main nav" data-offset="80">
+	<body data-spy="scroll" data-target=".header-nav-main nav" data-offset="80" class="bg-color-primary">
 		<div class="body">
 			<header id="header" class="header-transparent header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': false, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 80}">
 				<div class="header-body border-top-0 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">
@@ -19,14 +19,18 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-6 text-left">
-								<p class="inverted text-4">Name </p>
-							</div>
-							<div class="col-2 text-center">
-								<p class="inverted text-4">Lifes: </p>
-							</div>
-							<div class="col-2 text-center">
-								<p class="inverted text-4">Score: </p>
+							<div class="col-10" id="dynamic_header">
+								<div class="row">
+									<div class="col-6 text-left">
+										<p class="inverted text-4 mb-0">Ciao {{ user }} </p>
+									</div>
+									<div class="col-3 text-center">
+										<p class="inverted text-4 mb-0">Tentativi: {{ life }}</p>
+									</div>
+									<div class="col-3 text-center">
+										<p class="inverted text-4 mb-0">Punteggio: {{ score }} </p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

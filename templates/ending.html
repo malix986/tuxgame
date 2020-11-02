@@ -1,39 +1,24 @@
-
-
-{% extends 'base.html' %}
+{% extends 'game_page.html' %}
 {% block title %}
-  Thank You!
+   Ending Dummy | Test
 {% endblock %}
-{% block body %}
-<div class="container">
-  <!-- HEADER --> 
-    <!-- Remaining hints -->
-    <nav class="bkg_header_footer">
-      <div class="nav-wrapper" style="text-align:left">
-        <a class="hello_user">Ciao {{user}}</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a>Life: {{life}}</a></li>
-          <li><a>Score: {{score}}</a></li>
-        </ul>
-      </div>
-    </nav>
 
-  <span class="border">
-  </span>
-  <div style="background:{{color}} !important" class="jumbotron jumbotron-fluid"> 
-      <div class="container">
-        <h2 class="display-4">{{ winfail }}</h2>
-        <p class="lead">{{ esito }}</p>
-      </div>
-  </div>
-  <a href="/" class="btn">Nuova partita!</a>
-  <h2>GRAZIE PER AVER GIOCATO</h2>
+{% block content %}
+<div color='bg-color-primary'>
+<div class="card border-1 alert-{{color}} mb-2">
+	<div class="card-body">										
+		<h4 class="card-title mt-2 mb-1 text-4 font-weight-bold">{{ winfail }}</h4>
+		<p class="card-text">{{ esito }}</p>
+	</div>
 </div>
-<div class="card">
-  <div class="card-body">
+
+<h2 class="mt-4">GRAZIE PER AVER GIOCATO!</h2>
+<a href="/" class="btn btn-light mb-2 mt-2">GIOCA ANCORA</a>
+
+
   <div class="mt-4">
-      <table id="proxies" class="display table responsive" style="width: 100%">
-          <thead>
+      <table id="proxies" class="display table responsive table-hover bg-color-primary text-white" style="width: 100%">
+        <thead>
           <tr>
               {% for header in results[0].keys() %}
               <th>{{header}}</th>
@@ -41,16 +26,17 @@
           </tr>
           </thead>
           <tbody>
-          {% for row in results %}
+            {% for row in results %}
               <tr>
-              {% for index in range(0, len(fieldnames)) %}
-                  <td>{{row[fieldnames[index]]}}</td>
-              {% endfor %}
+                {% for index in range(0, len(fieldnames)) %}
+                    <td>{{row[fieldnames[index]]}}</td>
+                {% endfor %}
               </tr>
-          {% endfor %}
-          </tbody>
+            {% endfor %}
+        </tbody>
       </table>
   </div>
-  </div>
 </div>
+
 {% endblock %}
+
